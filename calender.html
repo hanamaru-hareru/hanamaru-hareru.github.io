@@ -1,0 +1,56 @@
+<div class="container">
+    <div id="forecast"></div>
+    <div id="calender-month-selector">
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="year-display" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <ul class="dropdown-menu" aria-labelledby="year-display" id="year-list">
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="month-display" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <ul class="dropdown-menu" aria-labelledby="month-display" id="month-list">
+                <li><a id="month-item-1" class="dropdown-item" href="#">1</a></li>
+                <li><a id="month-item-2" class="dropdown-item" href="#">2</a></li>
+                <li><a id="month-item-3" class="dropdown-item" href="#">3</a></li>
+                <li><a id="month-item-4" class="dropdown-item" href="#">4</a></li>
+                <li><a id="month-item-5" class="dropdown-item" href="#">5</a></li>
+                <li><a id="month-item-6" class="dropdown-item" href="#">6</a></li>
+                <li><a id="month-item-7" class="dropdown-item" href="#">7</a></li>
+                <li><a id="month-item-8" class="dropdown-item" href="#">8</a></li>
+                <li><a id="month-item-9" class="dropdown-item" href="#">9</a></li>
+                <li><a id="month-item-10" class="dropdown-item" href="#">10</a></li>
+                <li><a id="month-item-11" class="dropdown-item" href="#">11</a></li>
+                <li><a id="month-item-12" class="dropdown-item" href="#">12</a></li>
+            </ul>
+        </div>
+    </div>
+    <table id="horizontal-calender" class="table table-striped table-borderless">
+        <thead id="calender-head"></thead>
+        <tbody id="calender-days"></tbody>
+    </table>
+    <ul id="calender-view-type" class="nav nav-pills">
+        <li id="calender-view-0" class=""><a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+            </svg>
+        </a></li>
+        <li id="calender-view-1" class=""><a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+            </svg>
+        </a></li>
+    </ul>
+    <div id="calender-day-view" hidden>
+        <table id="calender-day-viewer" class="table table-striped table-borderless">
+            <thead id="calender-day-head"></thead>
+            <tbody id="calender-day-items"></tbody>
+        </table>
+        <table id="calender-day-details" class="table table-striped table-borderless">
+        </table>
+    </div>
+    <table id="vertical-calender" class="table table-striped table-borderless" hidden>
+        <tbody id="vertical-days">
+        </tbody>
+    </table>
+</div>
