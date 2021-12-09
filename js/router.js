@@ -22,6 +22,7 @@ const database_loader = [
 ];
 
 let database_load_start = undefined;
+let database_load_counter = 0;
 
 function router_handle_url() {
     // Parse the url.
@@ -53,27 +54,28 @@ function app_ui_init() {
     window.addEventListener('hashchange', router_handle_url, false);
 }
 
-function app_database_init(current_id) {
+function app_database_init() {
     //Check id validation.
-    if(current_id >= database_loader.length) {
-        const database_load_end = new Date().getTime();
-        console.log('Database cached: ' + (database_load_end - database_load_start) + 'ms');
-        //Load the user interface.
-        app_ui_init();
-        return;
+    for(let current_id=0;  current_id<database_loader.length; ++current_id) {
+        //Extract the database file info.
+        const load_info = database_loader[current_id];
+        const load_url = '/database/' + load_info[0], assign_callback = load_info[1];
+        //Fetch the json data.
+        app_fetch(load_url, function (json_raw_data) {
+            //Run the assignment function.
+            assign_callback(JSON.parse(json_raw_data));
+            // Increase the database counter.
+            database_load_counter += 1;
+            if(database_load_counter === database_loader.length) {
+                const database_load_end = new Date().getTime();
+                console.log('Database cached: ' + (database_load_end - database_load_start) + 'ms');
+                //Enabled app cache.
+                app_fetch_cache_enabled = true;
+                //Load the user interface.
+                app_ui_init();
+            }
+        });
     }
-    //Extract the database file info.
-    const load_info = database_loader[current_id];
-    const load_url = '/database/' + load_info[0], assign_callback = load_info[1];
-    //Fetch the json data.
-    app_fetch(load_url, function (json_raw_data) {
-        //Parse the json data.
-        let raw_json = JSON.parse(json_raw_data);
-        //Run the assignment function.
-        assign_callback(raw_json);
-        // Keep load the next data.
-        app_database_init(current_id + 1);
-    });
 }
 
 function app_init() {
@@ -95,5 +97,5 @@ function app_init() {
         '      .:.:...::\n', 'color: #db9854');
     // Load the database to local.
     database_load_start = new Date().getTime();
-    app_database_init(0);
+    app_database_init();
 }

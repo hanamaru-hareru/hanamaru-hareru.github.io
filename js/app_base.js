@@ -7,6 +7,7 @@ const i18n_map = {
 let app_url = {};
 let app_i18n = null;
 let app_fetch_cache = {};
+let app_fetch_cache_enabled = false;
 
 const navbar_ids = ['nav-stream', 'nav-calender', 'nav-single', 'nav-song-list', 'nav-misc'];
 
@@ -86,7 +87,9 @@ function app_fetch(url, finished) {
     loader.open('GET', url);
     loader.onload = function() {
         const response = loader.responseText;
-        app_fetch_cache[url] = response;
+        if(app_fetch_cache_enabled) {
+            app_fetch_cache[url] = response;
+        }
         finished(response);
     };
     loader.send();
