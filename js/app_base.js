@@ -98,6 +98,9 @@ function app_open_url(url) {
 }
 
 function app_hyperlink(url) {
+    if(url.length === 0) {
+        return '<a>'
+    }
     return '<a href="' + url + '" target="_blank" rel="noreferrer noopener">';
 }
 
