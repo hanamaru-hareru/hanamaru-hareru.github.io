@@ -30,7 +30,7 @@ const sl_song_sort_function = {
 };
 
 function song_name_to_esc(song_name) {
-    return encodeURIComponent(song_name);
+    return encodeURIComponent(song_name.trimLeft());
 }
 
 function esc_to_song_name(song_name) {

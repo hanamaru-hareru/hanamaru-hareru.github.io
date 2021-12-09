@@ -92,7 +92,7 @@ function calender_render(year, month) {
     const is_month = today_date.getFullYear() === year && today_date.getMonth()+1 === month;
     let first_has_stream = -1;
     for(let i=0; i<days; ++i) {
-        let h_day_html, vertical_day_html, v_day_class = [];
+        let h_day_html, vertical_day_html, v_day_class = ['clickable-header'];
         //Check today.
         if(is_month && today_date.getDate() === i+1) {
             h_day_html = '<td class="calender-today">';
@@ -120,7 +120,7 @@ function calender_render(year, month) {
             //Check whether it is live day.
             if(live_info[5]) {
                 const date = live_info[4];
-                live_html += ', <a href="#setori&year='+date.getFullYear()+'&month='+(date.getMonth()+1)+'&day='+date.getDate()+'">'+app_i18n.view_setori+'</a>';
+                live_html += ', <a class="half-opacity-text" href="#setori&year='+date.getFullYear()+'&month='+(date.getMonth()+1)+'&day='+date.getDate()+'">'+app_i18n.view_setori+'</a>';
             }
             h_day_html += '<div>'+live_html+'</div>';
             live_html = '<div class="vertical-calender-item">'+live_html+'</div>';
@@ -170,7 +170,7 @@ function calender_render(year, month) {
     document.getElementById('vertical-days').innerHTML = vertical_days.join('\n');
     document.getElementById('calender-day-details').innerHTML = v_detail_days.join('\n');
     // Assign detail visible.
-    for(let i=1; i<31; ++i) {
+    for(let i=1; i<32; ++i) {
         let element_show = document.getElementById('calender-show-'+i);
         if(element_show) {
             element_show.onclick = function() { calender_show_details(i); };
