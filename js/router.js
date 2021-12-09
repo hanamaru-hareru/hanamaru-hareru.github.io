@@ -14,6 +14,7 @@ const router_map = {
 const database_loader = [
     ['forecast.json', forecast_load_data],
     ['single.json', single_load_data],
+    ['voice-button.json', voice_load_data],
     ['slides.json', function(raw_data) { slides.records = raw_data; }],
     ['song-details.json', sl_song_info_load_data],
     ['song-list.json', sl_song_list_load_data],

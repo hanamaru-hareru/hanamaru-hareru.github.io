@@ -6,6 +6,7 @@ const i18n_map = {
 
 let app_url = {};
 let app_i18n = null;
+let app_fetch_cache = {};
 
 const navbar_ids = ['nav-stream', 'nav-calender', 'nav-single', 'nav-song-list', 'nav-misc'];
 
@@ -75,10 +76,19 @@ function apply_language(language_key) {
 }
 
 function app_fetch(url, finished) {
+    if(url in app_fetch_cache) {
+        // Call the finished function.
+        finished(app_fetch_cache[url]);
+        return;
+    }
     //Load the single page to content.
     let loader = new XMLHttpRequest();
     loader.open('GET', url);
-    loader.onload = function() { finished(loader.responseText); };
+    loader.onload = function() {
+        const response = loader.responseText;
+        app_fetch_cache[url] = response;
+        finished(response);
+    };
     loader.send();
 }
 
