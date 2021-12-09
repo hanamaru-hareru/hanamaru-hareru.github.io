@@ -76,17 +76,17 @@ function apply_language(language_key) {
 }
 
 function app_fetch(url, finished) {
-    if(url in app_fetch_cache) {
-        // Call the finished function.
-        finished(app_fetch_cache[url]);
-        return;
-    }
+    // if(url in app_fetch_cache) {
+    //     // Call the finished function.
+    //     finished(app_fetch_cache[url]);
+    //     return;
+    // }
     //Load the single page to content.
     let loader = new XMLHttpRequest();
     loader.open('GET', url);
     loader.onload = function() {
         const response = loader.responseText;
-        app_fetch_cache[url] = response;
+        // app_fetch_cache[url] = response;
         finished(response);
     };
     loader.send();
