@@ -19,6 +19,11 @@
       "zh_cn": "耳膜测试",
       "jp": "鼓膜テスト",
       "en": "Eardrum test"
+    },
+    "thanks": {
+      "zh_cn": "感谢",
+      "jp": "感謝",
+      "en": "Appreciation"
     }
   },
   "buttons": [
@@ -142,10 +147,10 @@
     {"filename": "118.mp3", "category": "", "zh_cn": "诶~duo↗"},
     {"filename": "119.mp3", "category": "", "zh_cn": "诶嘿"},
     {"filename": "120.mp3", "category": "", "zh_cn": "请用你那张嘴舔我的脚趾"},
-    {"filename": "121.mp3", "category": "", "zh_cn": "谢谢"},
-    {"filename": "122.mp3", "category": "", "zh_cn": "谢谢~（混响）"},
-    {"filename": "123.mp3", "category": "", "zh_cn": "谢谢儿子给妈妈的礼物"},
-    {"filename": "124.mp3", "category": "", "zh_cn": "谢谢（哭腔）"},
+    {"filename": "121.mp3", "category": "thanks", "zh_cn": "谢谢"},
+    {"filename": "122.mp3", "category": "thanks", "zh_cn": "谢谢~（混响）"},
+    {"filename": "123.mp3", "category": "thanks", "zh_cn": "谢谢儿子给妈妈的礼物"},
+    {"filename": "124.mp3", "category": "thanks", "zh_cn": "谢谢（哭腔）"},
     {"filename": "125.mp3", "category": "", "zh_cn": "这 是 不 是 鸡"},
     {"filename": "126.mp3", "category": "", "zh_cn": "钉宫三连"},
     {"filename": "127.mp3", "category": "", "zh_cn": "雅蠛蝶(1)"},
