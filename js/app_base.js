@@ -32,6 +32,17 @@ function app_parse_url() {
     app_url.args = keys;
 }
 
+function browser_language() {
+    const browser_flag = navigator.language;
+    if(browser_flag.startsWith('en-')) {
+        return 'en';
+    }
+    if(browser_flag.startsWith('zh-')) {
+        return 'zh_cn';
+    }
+    return 'jp';
+}
+
 function apply_language(language_key) {
     // Set the i18n.
     app_i18n = i18n_map[language_key];

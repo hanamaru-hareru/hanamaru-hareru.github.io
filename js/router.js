@@ -40,7 +40,8 @@ function router_handle_url() {
 
 function app_ui_init() {
     // Update the language settings.
-    apply_language(app_load_conf('language', 'jp'));
+    apply_language(app_load_conf('language', browser_language()));
+    console.log('Loading language: ', app_load_conf('language', browser_language()));
     // Render the title and banner.
     render_header();
     render_footer();

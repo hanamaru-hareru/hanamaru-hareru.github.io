@@ -44,7 +44,7 @@ function slides_render() {
         if(slide_title.startsWith('$#')) {
             slide_title = slide_title.substr(2);
             //Update the image url.
-            image_url = '/asserts/slides/' + slide_title + '.jpg';
+            image_url = '/asserts/slides/' + slide_title + '.png';
             //Check the title is valid or not.
             if(slide_title === 'last_live' || slide_title === 'last_song_live') {
                 //Find the last live but not song stream.
