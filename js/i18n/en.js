@@ -7,7 +7,7 @@ const en_translate = {
     navbar: ['Stream', 'Calender', 'Single', 'Song List', 'Misc.'],
     navbar_song_list: ['Song List', 'Single Songs', 'Medley Songs', 'All Songs', 'Statistic'],
     navbar_statistic: ['Limited Singles', 'Limited Medley'],
-    navbar_misc: ['Stream Greetings'],
+    navbar_misc: ['Stream Greetings', 'Harerun Button'],
     song_record_table_title: ['Song Name', 'Last sung', 'Times', 'Times @ Youtube', 'Times @ Bilibili'],
     footer_title: ['Official Stores', 'Channels', 'Live Rooms'],
     footer_links: ['Booth', 'Twitter', 'Youtube', 'Bilibili', 'Pixiv FANBOX', 'TwitCasting', 'BiliBili Schedule', 'BiliBili Stream Room'],

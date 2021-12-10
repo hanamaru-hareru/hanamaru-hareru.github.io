@@ -7,7 +7,7 @@ const zh_cn_translate = {
     navbar: ['直播', '日历', '单曲', '歌单', '杂物'],
     navbar_song_list: ['歌单', '单曲一览', '串烧一览', '全部曲目', '统计'],
     navbar_statistic: ['限定单曲', '限定串烧曲'],
-    navbar_misc: ['直播问候'],
+    navbar_misc: ['直播问候', '花丸按钮'],
     song_record_table_title: ['曲名', '最近一次演唱', '演唱次数', '油管演唱次数', 'B站演唱次数'],
     footer_title: ['官方商店', '频道连接', '直播间'],
     footer_links: ['Booth', 'Twitter', 'Youtube', 'Bilibili', 'Pixiv FANBOX', 'TwitCasting', 'BiliBili主播日历', 'BiliBili直播间'],

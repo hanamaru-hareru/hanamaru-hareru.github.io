@@ -83,6 +83,13 @@ function sl_append_time_stamp(live_url, timestamp) {
 }
 
 function sl_song_info_load_data(song_info_data) {
+    //Convert all the hiragana to katakana.
+    const song_ids = Object.keys(song_info_data);
+    for(let i=0; i<song_ids.length; ++i) {
+        let song_data = song_info_data[song_ids[i]];
+        song_data.k = convert_hiragana_to_katakana(song_data.k);
+        song_info_data[song_ids[i]] = song_data;
+    }
     song_list.details = song_info_data;
 }
 
@@ -430,14 +437,15 @@ function sl_set_song_table(target_records, counter_id, result_id) {
 }
 
 function sl_search_song_table(keywords, counter_id, result_id) {
+    //Preprocess the keywords.
+    keywords = convert_hiragana_to_katakana(keywords.toLowerCase());
     //Loop and search the result.
-    keywords = keywords.toLowerCase();
     let search_results = [];
     if(keywords.length > 0) {
         for(let i=0; i<song_list.target_records.length; ++i) {
             //Extract the song details.
             const song_details = song_list.target_records[i][2];
-            if(song_details.id.match(keywords) || song_details.r.match(keywords) || song_details.h.match(keywords) || song_details.a.match(keywords)) {
+            if(song_details.id.match(keywords) || song_details.r.match(keywords) || song_details.k.match(keywords) || song_details.a.match(keywords)) {
                 search_results.push(song_list.target_records[i]);
             }
         }

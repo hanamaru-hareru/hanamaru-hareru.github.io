@@ -434,6 +434,42 @@ button > * {
     padding-bottom: 10px;
 }
 
+/* voice buttons */
+.voice-button-title {
+    text-align: center;
+    font-size: 20px;
+    padding: 2px 0;
+}
+
+.voice-items {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    padding-left: 0;
+}
+
+.voice-item {
+    list-style: none;
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.voice-button {
+    background: #373737;
+    color: #fff;
+    border-radius: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
+    min-height: 30px;
+    line-height: 30px;
+    margin: 4px 4px;
+    min-width: 60px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
 /* calender */
 @media screen and (min-width: 767px) {
     /*PC version*/
