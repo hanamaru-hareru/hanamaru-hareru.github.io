@@ -457,6 +457,7 @@ button > * {
 
 .voice-playing {
     background: #564ff7 !important;
+    color: rgba(255, 255, 255, 0) !important;
 }
 
 .voice-button {
@@ -472,6 +473,14 @@ button > * {
     text-align: center;
     cursor: pointer;
     position: relative;
+}
+
+.voice-button-icon {
+    color: #ffffff!important;
+    position: absolute;
+    margin-left: -15px;
+    width: 100%;
+    height: 100%;
 }
 
 /* calender */

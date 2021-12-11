@@ -36,7 +36,10 @@ function misc_init_ui() {
                 let button_html = ['<li class="voice-item">'];
                 button_html.push('<div class="voice-button" id="voice-button-'+button_info.filename
                     +'" onclick="voice_play(\''+button_info.filename+'\');">');
-                button_html.push('<span>'+misc_get_ui_text(button_info.name, prefer)+'</span>');
+                button_html.push(
+                    '<span class="voice-button-icon" id="voice-button-'+button_info.filename+'-icon">\n'+
+                    '</span>')
+                button_html.push(misc_get_ui_text(button_info.name, prefer));
                 button_html.push('</div></li>');
                 button_list_html.push(button_html.join('\n'));
             }
