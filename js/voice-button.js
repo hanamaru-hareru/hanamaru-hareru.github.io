@@ -13,23 +13,9 @@ const voice_icon_pausing = '<svg xmlns="http://www.w3.org/2000/svg" width="16" h
     '  <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>\n' +
     '</svg>'
 
-function voice_on_play() {
-    voice_on_canplay();
-    let audio_tag = document.getElementById('misc-button-audio');
-    audio_tag.play();
-}
-
 function voice_on_canplay() {
     let button_icon = document.getElementById('voice-button-'+voice_button.playing_id+'-icon');
     button_icon.innerHTML = voice_icon_playing;
-}
-
-function voice_on_pause() {
-    let button_icon = document.getElementById('voice-button-'+voice_button.playing_id+'-icon');
-    button_icon.innerHTML = voice_icon_pausing;
-    //Pause the audio.
-    let audio_tag = document.getElementById('misc-button-audio');
-    audio_tag.pause();
 }
 
 function voice_on_end() {
@@ -54,9 +40,14 @@ function voice_play(filename) {
         if(voice_button.playing_id === filename) {
             //Pause the current button.
             if(audio_tag.paused) {
-                voice_on_play();
+                audio_tag.play();
+                voice_on_canplay();
             } else {
-                voice_on_pause();
+                //Pause the audio.
+                audio_tag.pause();
+                //Change the icon.
+                let button_icon = document.getElementById('voice-button-'+voice_button.playing_id+'-icon');
+                button_icon.innerHTML = voice_icon_pausing;
             }
             return;
         } else {
@@ -75,7 +66,7 @@ function voice_play(filename) {
     //Set the source.
     audio_tag.setAttribute('src', '/asserts/button-voices/'+filename+'.mp3');
     //Play the audio.
-    voice_on_play();
+    audio_tag.play();
 }
 
 function voice_load_data(voice_data) {
