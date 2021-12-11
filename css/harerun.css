@@ -455,6 +455,10 @@ button > * {
     text-align: -webkit-match-parent;
 }
 
+.voice-playing {
+    background: #564ff7 !important;
+}
+
 .voice-button {
     background: #373737;
     color: #fff;

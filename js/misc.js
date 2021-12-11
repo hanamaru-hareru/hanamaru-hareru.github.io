@@ -33,14 +33,16 @@ function misc_init_ui() {
             button_list_html.push('<div class="voice-button-title">'+misc_get_ui_text(button_class[0], prefer)+'</div><div><ul class="voice-items">');
             for(let j=0; j<button_data.length; ++j) {
                 const button_info = button_data[j];
-                let button_html = ['<li class="voice-item"><div class="voice-button">'];
-                button_html.push('<span>'+misc_get_ui_text(button_info.name)+'</span>');
+                let button_html = ['<li class="voice-item">'];
+                button_html.push('<div class="voice-button" id="voice-button-'+button_info.filename
+                    +'" onclick="voice_play(\''+button_info.filename+'\');">');
+                button_html.push('<span>'+misc_get_ui_text(button_info.name, prefer)+'</span>');
                 button_html.push('</div></li>');
                 button_list_html.push(button_html.join('\n'));
             }
             button_list_html.push('</ul></div>');
         }
-        document.getElementById('misc-panel-button').innerHTML = button_list_html.join('\n');
+        document.getElementById('misc-button-view').innerHTML = button_list_html.join('\n');
         return;
     }
     //Default, greetings.

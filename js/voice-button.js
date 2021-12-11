@@ -1,6 +1,38 @@
 let voice_button = {
-    button_info: []
+    button_info: [],
+    playing_id: ''
 };
+
+function voice_on_play() {
+    ;
+}
+
+function voice_on_pause() {
+    ;
+}
+
+function voice_on_end() {
+    let button_tag = document.getElementById('voice-button-'+voice_button.playing_id);
+    button_tag.classList.remove('voice-playing');
+}
+
+function voice_play(filename) {
+    //Check previous id.
+    if(voice_button.playing_id.length > 0) {
+        //Reset the button.
+        voice_on_end();
+    }
+    //Save the playing id.
+    voice_button.playing_id = filename;
+    //Set the playing style.
+    let button_tag = document.getElementById('voice-button-'+voice_button.playing_id);
+    button_tag.classList.add('voice-playing');
+    let audio_tag = document.getElementById('misc-button-audio');
+    //Set the source.
+    audio_tag.setAttribute('src', '/asserts/button-voices/'+filename+'.mp3');
+    //Play the audio.
+    audio_tag.play();
+}
 
 function voice_load_data(voice_data) {
     const button_info_list = voice_data.buttons, category_map = voice_data.categories;
