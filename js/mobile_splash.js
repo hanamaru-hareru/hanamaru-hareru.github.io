@@ -1,6 +1,6 @@
 // Check whether the website is running on mobile.
 let show_splash = true;
-const splash_disable_key = 'no-splash';
+const splash_disable_key = 'no-splash', splash_cache_key = 'splash_img';
 const resolution_map = {
     "640x1136": "Default-568h@2x.png",
     "750x1334": "Default-667h@2x.png",
@@ -39,6 +39,11 @@ function splash_init() {
         splash_hide();
         return;
     }
+    //Check whether we already has a cached splash image.
+    let cached_splash = app_load_conf(splash_cache_key, undefined);
+    // if(cached_splash) {
+    //     console.log(cached_splash);
+    // }
     //Now get the resolution, and select the splash screen.
     const screen_width = window.screen.width, screen_height = window.screen.height;
     const res_1x = screen_width+'x'+screen_height, res_2x = (screen_width*2)+'x'+(screen_height*2);
