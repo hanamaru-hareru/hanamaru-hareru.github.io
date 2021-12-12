@@ -22,6 +22,8 @@ function splash_hide() {
         document.getElementById('splash-screen').setAttribute('hidden', 'true');
         show_splash = false;
     }
+    //Scroll to the top.
+    window.scrollTo(0, 0);
 }
 
 function set_splash_and_start(splash_res) {

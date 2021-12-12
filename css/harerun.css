@@ -216,6 +216,7 @@ footer a:hover {
 .footer-row h5 {
     font-size: 14px;
     font-weight: bold;
+    margin-top: 8px;
 }
 
 .footer-row li {

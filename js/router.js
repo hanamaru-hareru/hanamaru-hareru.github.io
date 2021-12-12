@@ -74,6 +74,8 @@ function app_ui_init() {
     render_contact_links();
     // This is the entrance of the app.
     router_handle_url();
+    // Disable smooth scroll.
+    document.documentElement.style.scrollBehavior = 'auto';
     // When the url is change, we update the content.
     window.addEventListener('hashchange', router_handle_url, false);
 }
