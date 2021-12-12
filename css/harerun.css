@@ -481,6 +481,12 @@ button > * {
     margin-left: -15px;
     width: 100%;
     height: 100%;
+    vertical-align: center;
+}
+
+.voice-button-icon svg {
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 /* calender */

@@ -27,6 +27,10 @@ const database_loader = [
     ],
 ];
 
+const ui_pages = [
+    'calender', 'misc', 'setori', 'single', 'song-detail', 'song-list', 'song-statistic', 'song-view', 'stream'
+];
+
 let database_load_start = undefined;
 
 function router_handle_url() {
@@ -43,6 +47,21 @@ function router_handle_url() {
     }
     //Or else, call the default function.
     router_map['/']();
+}
+
+function app_ui_cache() {
+    // Caching the UI pages at very beginning.
+    let ui_cache_counter = 0;
+    for(let page_id=0; page_id<ui_pages.length; ++page_id) {
+        app_fetch(ui_pages[page_id]+'.html', function(html_raw_data) {
+            //Ignore the raw data.
+            ui_cache_counter += 1;
+            if(ui_cache_counter === ui_pages.length) {
+                //Load the core UI.
+                app_ui_init();
+            }
+        });
+    }
 }
 
 function app_ui_init() {
@@ -67,7 +86,7 @@ function app_database_init(level) {
         //Enabled app cache.
         app_fetch_cache_enabled = true;
         //Load the user interface.
-        app_ui_init();
+        app_ui_cache();
         return;
     }
     //First load the level information.
