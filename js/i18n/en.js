@@ -2,7 +2,7 @@ const en_translate = {
     translate_name: 'English',
     brand: 'Harerunpedia β',
     day_of_the_week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    day_of_the_week_short: ['SUn.', 'Mon.', 'Tue.', 'Wed,', 'Thu.', 'Fri.', 'Sat.'],
+    day_of_the_week_short: ['Sun.', 'Mon.', 'Tue.', 'Wed,', 'Thu.', 'Fri.', 'Sat.'],
     contacts: ['Twitter', 'Youtube', 'Bilibili', 'Fanbox'],
     navbar: ['Stream', 'Calender', 'Single', 'Song List', 'Misc.'],
     navbar_song_list: ['Song List', 'Single Songs', 'Medley Songs', 'All Songs', 'Statistic'],
