@@ -126,7 +126,7 @@ function stream_search(keywords) {
         let song_list_url = '';
         if(video_info[5]) {
             const date = video_info[4];
-            song_list_url = '<a class="float-to-right" href="#setori&year='+date.getFullYear()+'&month='+(date.getMonth()+1)+'&day='+date.getDate()+'">'+app_i18n.view_setori+'</a>';
+            song_list_url = '<a class="half-opacity-text float-to-right" href="#setori&year='+date.getFullYear()+'&month='+(date.getMonth()+1)+'&day='+date.getDate()+'">'+app_i18n.view_setori+'</a>';
         }
         // Construct the title part.
         const row_src = ["<tr>",
