@@ -11,7 +11,8 @@
 }
 
 .harerun-banner {
-    background: url("/asserts/banner.jpg") no-repeat;
+    background-image: url("/asserts/banner.jpg");
+    background-repeat: no-repeat;
     background-size:cover;
     background-position: center center;
     min-height: 160px;
