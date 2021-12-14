@@ -19,7 +19,7 @@ function slides_render() {
         let slide_html = [
             '<div class="carousel-item'+image_class+'">',
             app_hyperlink(target_url),
-            '<img class="bd-placeholder-img" width="100%" height="100%" src="'+image_url+'">',
+            '<img class="placeholder-img" width="100%" height="100%" src="'+image_url+'">',
             '<div class="carousel-caption">',
             '<div class="carousel-holder">',
             '   <h1>'+title+'</h1>',

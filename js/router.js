@@ -80,7 +80,7 @@ function app_ui_init() {
     window.addEventListener('hashchange', router_handle_url, false);
 }
 
-function app_database_init(level) {
+ function app_database_init(level) {
     //Check whether all the level reach are loaded.
     if(level >= database_loader.length) {
         const database_load_end = new Date().getTime();
@@ -127,7 +127,7 @@ function app_init() {
         '     .::.      .:-  .:::.           \\ \\__\\ \\__\\ \\__\\ \\__\\ \\__\\\\ _\\\\ \\_______\\ \\__\\\\ _\\\\ \\_______\\ \\__\\\\ \\__\\\n' +
         '   ::         :::..-:                \\|__|\\|__|\\|__|\\|__|\\|__|\\|__|\\|_______|\\|__|\\|__|\\|_______|\\|__| \\|__|\n' +
         ' .-          ..   ::\n' +
-        '.-               -.                                        Release 2.0.211202. Powered by hnmr-core 2.1.1.\n' +
+        '.-               -.                                        Release '+release_version.join('.')+'. Powered by hnmr-core '+core_version.join('.')+'.\n' +
         ' ::::.         ::                                          はれちゃんがずっと幸せでいられますように。\n' +
         '      .:.:...::\n', 'color: #db9854');
     // Load the database to local.

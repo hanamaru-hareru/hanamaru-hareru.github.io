@@ -17,7 +17,7 @@ function misc_get_ui_text(name_object, prefer) {
 
 function misc_init_ui() {
     // Render the headers.
-    const nav_ids = ['misc-greeting', 'misc-button'];
+    const nav_ids = ['misc-greeting', 'misc-button', 'misc-about'];
     for(let i=0; i<nav_ids.length; ++i) {
         document.getElementById(nav_ids[i]+'-label').innerHTML = app_i18n.navbar_misc[i];
     }
@@ -46,6 +46,18 @@ function misc_init_ui() {
             button_list_html.push('</ul></div>');
         }
         document.getElementById('misc-button-view').innerHTML = button_list_html.join('\n');
+        return;
+    }
+    if('about' in app_url.args) {
+        document.getElementById('misc-about').classList.add('active');
+        document.getElementById('misc-panel-about').removeAttribute('hidden');
+        document.getElementById('misc-about-title').innerHTML = app_i18n.brand + ' ' + release_version.join('.');
+        document.getElementById('misc-message-maintain').innerHTML = app_i18n.footer_maintain;
+        document.getElementById('misc-message-warning').innerHTML = app_i18n.footer_warning;
+        document.getElementById('misc-message-copyright').innerHTML = app_i18n.footer_copyright;
+        document.getElementById('misc-about-1').innerHTML = app_i18n.footer_author;
+        document.getElementById('misc-about-2').innerHTML = app_i18n.footer_data_correct;
+
         return;
     }
     //Default, greetings.

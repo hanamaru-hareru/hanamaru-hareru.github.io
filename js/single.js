@@ -10,7 +10,7 @@ function single_render_items(item_list) {
             '<div class="col">',
             '<div class="card shadow-sm">',
             app_hyperlink(app_archive_url(single_item.y_url, single_item.b_url)),
-            '<img class="bd-placeholder-img card-img-top" width="100%" height="160" role="img" aria-label="Placeholder" src="'+single_item.img+'">',
+            '<img class="placeholder-img card-img-top" width="100%" height="160" role="img" aria-label="Placeholder" src="'+single_item.img+'">',
             '</a>',
             '<div class="card-body">',
             '<p class="card-text">'+single_item.title+'</p>',

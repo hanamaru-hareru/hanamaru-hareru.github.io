@@ -1,3 +1,6 @@
+const release_version = [2, 1, 211202];
+const core_version = [2, 2, 0];
+
 const i18n_map = {
     'zh_cn': zh_cn_translate,
     'jp': jp_translate,
@@ -180,6 +183,7 @@ function app_reload() {
 }
 
 function render_header() {
+    //Set brand name
     let nav_brand = document.getElementById('nav-brand');
     nav_brand.innerHTML = app_i18n.brand;
     nav_brand.onclick = app_reload;
@@ -202,7 +206,6 @@ function render_footer() {
     for(let i=0; i<footer_link_ids.length; ++i) {
         document.getElementById(footer_link_ids[i]).innerHTML = app_i18n.footer_links[i];
     }
-    document.getElementById('f-maintainer').innerHTML = app_i18n.footer_maintain;
     document.getElementById('f-license').innerHTML = app_i18n.footer_license;
 }
 
