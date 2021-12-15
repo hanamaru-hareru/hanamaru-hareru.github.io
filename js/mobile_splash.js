@@ -28,7 +28,6 @@ function splash_hide() {
 
 function set_splash_and_start(splash_res) {
     let splash_div = document.getElementById('splash-screen');
-    console.log(splash_res);
     splash_div.style.backgroundImage = 'url('+splash_res+')';
     // console.log(splash_div.style.backgroundImage)
     splash_div.style.backgroundRepeat = 'no-repeat';
