@@ -145,7 +145,7 @@ function sl_song_list_load_data(song_list_data) {
         }
         for(let j=0; j<medley.length; ++j) {
             const song_data = medley[j];
-            count_song(medley_statistic, song_data[0], is_y, i, song_data[1]);
+            count_song(medley_statistic, song_data[0].trimLeft(), is_y, i, song_data[1]);
         }
         //Count the year and date.
         const live_year = live_data.date.getFullYear();
@@ -238,7 +238,7 @@ function sl_song_list_load_data(song_list_data) {
     }
 
     // Find all the limited songs.
-    function get_limited_songs(song_statistics) {
+    function get_stream_limited_songs(song_statistics) {
         let limited_youtube = [], limited_bilibili = [], not_limited = [];
         for(let i=0; i<song_statistics.length; ++i) {
             const song_info = song_statistics[i][1];
@@ -252,8 +252,8 @@ function sl_song_list_load_data(song_list_data) {
         }
         return {'youtube': limited_youtube, 'bilibili': limited_bilibili, 'both': not_limited};
     }
-    song_list.song_limited = get_limited_songs(song_list.song_statistic);
-    song_list.medley_limited = get_limited_songs(song_list.medley_statistic);
+    song_list.song_stream_limited = get_stream_limited_songs(song_list.song_statistic);
+    song_list.medley_stream_limited = get_stream_limited_songs(song_list.medley_statistic);
 
     song_list.records = song_list_data;
 }
@@ -680,12 +680,12 @@ function sl_statistic_init_ui() {
     if('medley' in app_url.args) {
         document.getElementById('sl-s-medley').classList.add('active');
         // Render the limited statistic.
-        render_limited_statistic(song_list.medley_limited);
+        render_limited_statistic(song_list.medley_stream_limited);
         return;
     }
     document.getElementById('sl-s-songs').classList.add('active');
     // Render the limited statistic.
-    render_limited_statistic(song_list.song_limited);
+    render_limited_statistic(song_list.song_stream_limited);
 }
 
 function sl_load_statistic() {
