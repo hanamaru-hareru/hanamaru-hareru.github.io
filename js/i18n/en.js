@@ -6,7 +6,7 @@ const en_translate = {
     contacts: ['Twitter', 'Youtube', 'Bilibili', 'Fanbox'],
     navbar: ['Stream', 'Calender', 'Single', 'Song List', 'Misc.'],
     navbar_song_list: ['Song List', 'Single Songs', 'Medley Songs', 'All Songs', 'Statistic'],
-    navbar_statistic: ['Limited Singles', 'Limited Medley'],
+    navbar_statistic: ['Stream Limited Singles', 'Stream Limited Medley'],
     navbar_misc: ['Stream Greetings', 'Harerun Button', 'Site Info'],
     song_record_table_title: ['Song Name', 'Last sung', 'Times', 'Times @ Youtube', 'Times @ Bilibili'],
     footer_title: ['Official Stores', 'Channels', 'Live Rooms'],
