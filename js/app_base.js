@@ -1,5 +1,5 @@
-const release_version = [2, 1, 211202];
-const core_version = [2, 2, 0];
+const release_version = [3, 0, 211218];
+const core_version = [3, 0, 0];
 
 const i18n_map = {
     'zh_cn': zh_cn_translate,
