@@ -80,7 +80,7 @@ function app_ui_init() {
     window.addEventListener('hashchange', router_handle_url, false);
 }
 
- function app_database_init(level) {
+function app_database_init(level) {
     //Check whether all the level reach are loaded.
     if(level >= database_loader.length) {
         const database_load_end = new Date().getTime();
