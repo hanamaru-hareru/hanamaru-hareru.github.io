@@ -313,6 +313,11 @@ button > * {
 }
 
 /* slides */
+#stream-padding {
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
 #stream-slide-container {
     position: relative;
     padding: 0;
