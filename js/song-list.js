@@ -438,6 +438,7 @@ function sl_set_song_table(target_records, counter_id, result_id) {
 
 function sl_search_song_table(keywords, counter_id, result_id) {
     //Preprocess the keywords.
+    const raw_keywords = keywords;
     keywords = convert_hiragana_to_katakana(keywords.toLowerCase());
     //Loop and search the result.
     let search_results = [];
@@ -445,7 +446,7 @@ function sl_search_song_table(keywords, counter_id, result_id) {
         for(let i=0; i<song_list.target_records.length; ++i) {
             //Extract the song details.
             const song_details = song_list.target_records[i][2];
-            if(song_details.id.match(keywords) || song_details.r.match(keywords) || song_details.k.match(keywords) || song_details.a.match(keywords)) {
+            if(song_details.id.match(raw_keywords) || song_details.id.match(keywords) || song_details.r.match(keywords) || song_details.k.match(keywords) || song_details.a.match(keywords)) {
                 search_results.push(song_list.target_records[i]);
             }
         }
