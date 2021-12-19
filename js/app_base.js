@@ -105,7 +105,7 @@ function apply_language(language_key) {
             app_set_conf('language', language_keys[i]);
             //Refresh the current page.
             app_set_conf(splash_disable_key, true);
-            window.location.reload(false);
+            window.location.reload();
         }
     }
 }
@@ -117,16 +117,17 @@ function app_fetch(url, finished) {
         return;
     }
     //Load the single page to content.
-    let loader = new XMLHttpRequest();
-    loader.open('GET', url);
-    loader.onload = function() {
-        const response = loader.responseText;
-        if(app_fetch_cache_enabled) {
-            app_fetch_cache[url] = response;
-        }
-        finished(response);
-    };
-    loader.send();
+    fetch(url, {
+        method: 'GET',
+        cache: 'no-cache'
+    }).then(function (res) {
+        res.text().then(function (response) {
+            if(app_fetch_cache_enabled) {
+                app_fetch_cache[url] = response;
+            }
+            finished(response);
+        });
+    });
 }
 
 function app_load_panel(panel_url, callback) {
@@ -161,7 +162,7 @@ function app_archive_url(y_url, b_url, expected) {
     }
     //Both are available.
     if(app_i18n.force_bilibili || expected === 'b') {
-        //When forcely or expect to use bilibili, then use b url.
+        //When force or expect to use bilibili, then use b url.
         return b_url;
     }
     //Otherwise, youtube url.
@@ -179,7 +180,7 @@ function app_collapse_navbar() {
 }
 
 function app_reload() {
-    window.location.reload(true);
+    window.location.reload();
 }
 
 function render_header() {
