@@ -1,3 +1,4 @@
+
 let song_list = {
     records: [],
     display_cache: [],
@@ -673,7 +674,7 @@ function render_limited_statistic(limited_songs) {
 
 function sl_statistic_init_ui() {
     // Render the navbar.
-    const navbar_statistic_ids = ['sl-s-songs-label', 'sl-s-medley-label'];
+    const navbar_statistic_ids = ['sl-s-songs-label', 'sl-s-medley-label', 'sl-s-medley-only-label'];
     for(let i=0; i<navbar_statistic_ids.length; ++i) {
         document.getElementById(navbar_statistic_ids[i]).innerHTML = app_i18n.navbar_statistic[i];
     }
@@ -682,6 +683,11 @@ function sl_statistic_init_ui() {
         document.getElementById('sl-s-medley').classList.add('active');
         // Render the limited statistic.
         render_limited_statistic(song_list.medley_stream_limited);
+        return;
+    }
+    if('medley-only' in app_url.args) {
+        document.getElementById('sl-s-medley-only').classList.add('active');
+        // Render
         return;
     }
     document.getElementById('sl-s-songs').classList.add('active');
