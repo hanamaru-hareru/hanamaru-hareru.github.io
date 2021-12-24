@@ -17,6 +17,7 @@ const en_translate = {
     footer_author: 'Program, maintenance, data collection, and many others: ',
     footer_copyright: "This is an UNOFFICIAL site. All the information, images, audio and other data are all from Hanamaru Hareru's official accounts. Copyright of these data are belongs to the original authors. This website is only for learning, entertainment and communication, and it is forbidden to use it for commercial purposes by anyone other than Hanamaru Hareru official and the original copyright holder. If you have any questions, please send E-mail to <a href=\"mailto:haolei.ye@anu.edu.au\">haolei.ye@anu.edu.au</a>.",
     footer_data_correct: 'Data review: ',
+    footer_resource: 'Resource used from: ',
     title_stream: 'All Harerun Streams',
     title_calender: 'Hanamaru Stream Calender',
     title_single: "Harerun's single songs",

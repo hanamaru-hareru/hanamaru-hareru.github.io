@@ -50,7 +50,12 @@ function forecast_render() {
                 stream_time += ' ' + app_i18n.jst(forcast_time_to_str(jst_time));
             }
             //Construct the JST time text.
-            const sicon = display_list[i].platform === 'b' ? 'icon-bilibili' : 'icon-youtube';
+            let sicon = 'icon-youtube';
+            if(display_list[i].platform === 'b') {
+                sicon = 'icon-bilibili';
+            } else if (display_list[i].platform === 'f') {
+                sicon = 'icon-fanbox';
+            }
             let stream_info = ['<div class="time-row">',
                 app_hyperlink(display_list[i].url),
                 '<div class="text-icon ' + sicon + '">',
@@ -103,6 +108,9 @@ function forecast_load_data(forecast_data) {
         if(forecast_data[i].platform === "b") {
             //Bilibili live, the URL is fixed.
             forecast_data[i].url = "https://live.bilibili.com/21547895";
+        } else if(forecast_data[i].platform === "f") {
+            //FANBOX live, the URL uses FANBOX page instead.
+            forecast_data[i].url = "https://www.fanbox.cc/@hanamaruhareru";
         }
         valid_forecast.push(forecast_data[i]);
     }

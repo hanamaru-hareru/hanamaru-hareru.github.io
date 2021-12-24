@@ -17,6 +17,7 @@ const zh_cn_translate = {
     footer_copyright: '本网站为非官方制作。网站中的信息、图片、音频及其他数据均来自花丸晴琉官方账号。这些数据的著作权归原作者所有。本网站仅供学习娱乐交流使用，并且禁止除花丸晴琉官方与原版权所有者以外的任何人用于商业用途。如果您有任何疑问，请发送邮件到<a href="mailto:haolei.ye@anu.edu.au">haolei.ye@anu.edu.au</a>咨询。',
     footer_author: '程序、维护、数据收集、杂役：',
     footer_data_correct: '数据检查：',
+    footer_resource: '素材提供：',
     title_stream: '花丸的全部直播',
     title_calender: '花丸直播日历',
     title_single: '花丸的单曲',

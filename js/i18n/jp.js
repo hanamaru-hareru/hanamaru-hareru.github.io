@@ -17,6 +17,7 @@ const jp_translate = {
     footer_author: 'プログラム、メンテナンス、データ取集、雑役担当：',
     footer_copyright: "これは花丸はれるの非公式サイトです。すべての情報、画像、音声、その他のデータは花丸晴の公式アカウントからのものです。 これらの著作権は元の作者に帰属します。このサイトは学習、娯楽、交流を目的としており、花丸はれる公式と元の著作権者以外の者が商業目的で使用することは禁止です。詳細については、<a href=\"mailto:haolei.ye@anu.edu.au\">haolei.ye@anu.edu.au</a>にメールを送信してください。",
     footer_data_correct: 'データ審査：',
+    footer_resource: '素材提供：',
     title_stream: 'はれるん全ての配信',
     title_calender: 'はれるん配信カレンダ',
     title_single: 'はれるんのシングル',

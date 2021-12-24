@@ -57,7 +57,7 @@ function misc_init_ui() {
         document.getElementById('misc-message-copyright').innerHTML = app_i18n.footer_copyright;
         document.getElementById('misc-about-1').innerHTML = app_i18n.footer_author;
         document.getElementById('misc-about-2').innerHTML = app_i18n.footer_data_correct;
-
+        document.getElementById('misc-about-3').innerHTML = app_i18n.footer_resource;
         return;
     }
     //Default, greetings.

@@ -1,6 +1,8 @@
 const theme_settings = {
     '10-31': 'theme-halloween.css',
-    '11-1': 'theme-halloween.css'
+    '11-1': 'theme-halloween.css',
+    '12-24': 'theme-christmas.css',
+    '12-25': 'theme-christmas.css',
 }
 const theme_date = new Date();
 const date_key = (theme_date.getMonth()+1) + '-' + theme_date.getDate();

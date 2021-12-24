@@ -382,10 +382,6 @@ button > * {
     margin-left: 14px;
 }
 
-.search-result-counter {
-
-}
-
 .search-icon path {
     color: #9aa0a6;
     fill: currentColor;
@@ -396,7 +392,7 @@ button > * {
     margin-top: 5px;
     margin-bottom: 10px;
     margin-left: 55px;
-    color: #70757a;
+    color: rgb(var(--hint-color));
 }
 
 /* forecast */
@@ -419,6 +415,12 @@ button > * {
 
 .card {
     background-color: rgb(var(--background-color));
+}
+
+.card-body button {
+    color: rgb(var(--button-text));
+    background-color: rgb(var(--button-color));
+    border-color: rgb(var(--button-color));
 }
 
 /* song list */
