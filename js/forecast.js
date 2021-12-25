@@ -105,12 +105,14 @@ function forecast_load_data(forecast_data) {
             continue;
         }
         //The time is JST.
-        if(forecast_data[i].platform === "b") {
-            //Bilibili live, the URL is fixed.
-            forecast_data[i].url = "https://live.bilibili.com/21547895";
-        } else if(forecast_data[i].platform === "f") {
-            //FANBOX live, the URL uses FANBOX page instead.
-            forecast_data[i].url = "https://www.fanbox.cc/@hanamaruhareru";
+        if(forecast_data[i].url.length === 0) {
+            if(forecast_data[i].platform === "b") {
+                //Bilibili live, the URL is fixed.
+                forecast_data[i].url = "https://live.bilibili.com/21547895";
+            } else if(forecast_data[i].platform === "f") {
+                //FANBOX live, the URL uses FANBOX page instead.
+                forecast_data[i].url = "https://www.fanbox.cc/@hanamaruhareru";
+            }
         }
         valid_forecast.push(forecast_data[i]);
     }

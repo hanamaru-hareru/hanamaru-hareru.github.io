@@ -111,9 +111,9 @@ function sl_song_list_load_data(song_list_data) {
         }
         song_statistic[song_name] = song_info;
     }
-
+    console.log('Total song lists: ', song_list_data.length);
     //Statistic the date and songs.
-    let calender = {}, song_statistic = {}, medley_statistic = {};
+    let calender = {}, song_statistic = {}, medley_statistic = {}, song_counter = 0;
     for(let i=0; i<song_list_data.length; ++i) {
         song_list_data[i].date = new Date(song_list_data[i].date);
         const live_data = song_list_data[i];
@@ -126,12 +126,14 @@ function sl_song_list_load_data(song_list_data) {
         }
         //Count the song seperately.
         let medley = [], normal = [], last_medley = false;
+        song_counter += songs.length;
         for(let j=0; j<songs.length; ++j) {
             const song_pos = has_timestamp ? song_timestamp[j] : -1;
             if(songs[j][0] === '\t') {
                 //Last title is medley title, remove it.
                 if(!last_medley) {
                     normal.pop();
+                    song_counter -= 1;
                 }
                 medley.push([songs[j], song_pos]);
                 last_medley = true;
@@ -156,6 +158,7 @@ function sl_song_list_load_data(song_list_data) {
             calender[live_year] = [[live_data, i]];
         }
     }
+    console.log('Total song counter: ', song_counter);
     // Save the calender.
     song_list.calender = calender;
     // Save the song statistic.
