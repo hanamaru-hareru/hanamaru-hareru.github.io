@@ -5,6 +5,10 @@ function forecast_is_today(today, forecast_day) {
 }
 
 function forecast_is_valid(today, forecast_day) {
+    if(today.getFullYear() < forecast_day.getFullYear()) {
+        //Ignore the date.
+        return true;
+    }
     if(today.getFullYear() !== forecast_day.getFullYear()) {
         //Ignore the date.
         return false;
@@ -90,6 +94,7 @@ function forecast_load_data(forecast_data) {
         //Parse the hour and minute.
         return [parseInt(time_str.substr(0, colon_pos)), parseInt(time_str.substr(colon_pos+1))];
     }
+
     const local_date = new Date();
     let valid_forecast = [];
     for(let i=0; i<forecast_data.length; ++i) {
