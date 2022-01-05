@@ -3,6 +3,7 @@
         <ul class="nav nav-pills">
             <li id="misc-greeting"><a id="misc-greeting-label" href="#misc&greeting"></a></li>
             <li id="misc-button"><a id="misc-button-label" href="#misc&button"></a></li>
+            <li id="misc-omikuji"><a id="misc-omikuji-label" href="#misc&omikuji"></a></li>
             <li id="misc-about"><a id="misc-about-label" href="#misc&about"></a></li>
         </ul>
     </nav>
@@ -44,6 +45,13 @@
     <div id="misc-panel-button" class="misc-frame" hidden>
         <audio id="misc-button-audio" ref="misc-button-audio" onended="voice_on_end()" oncanplaythrough="voice_on_canplay()"></audio>
         <div id="misc-button-view"></div>
+    </div>
+    <div id="misc-panel-omikuji" class="misc-frame" hidden>
+        <div id="omikuji-container">
+            <h2 id="omikuji-title"></h2>
+            <img id="omikuji-image" src="">
+            <p id="omikuji-source"><span id="omikuji-source-label-0"></span><a id="omikuji-source-label-1" href="https://twitter.com/niziato_2525/status/1477618594980962307"></a>, <a id="omikuji-source-label-2" href="https://t.bilibili.com/611656639205427500"></a></p>
+        </div>
     </div>
     <div id="misc-panel-about" class="misc-frame" hidden>
         <h3 id="misc-about-title"></h3>

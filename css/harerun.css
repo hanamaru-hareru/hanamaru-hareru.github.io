@@ -458,6 +458,24 @@ button > * {
     padding-bottom: 10px;
 }
 
+/* omikuji */
+#omikuji-container {
+    text-align: center;
+}
+
+#omikuji-title {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+#omikuji-image {
+    width: 100%;
+}
+
+#omikuji-source {
+    margin-top: 10px;
+}
+
 /* voice buttons */
 .voice-button-title {
     text-align: center;
