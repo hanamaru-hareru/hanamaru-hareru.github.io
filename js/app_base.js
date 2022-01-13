@@ -110,7 +110,7 @@ function apply_language(language_key) {
     }
 }
 
-function app_fetch(url, finished) {
+function app_fetch(url, finished, user) {
     if(url in app_fetch_cache) {
         // Call the finished function.
         finished(app_fetch_cache[url]);
@@ -125,7 +125,12 @@ function app_fetch(url, finished) {
             if(app_fetch_cache_enabled) {
                 app_fetch_cache[url] = response;
             }
-            finished(response);
+            if(user) {
+                finished(response, user);
+            } else {
+                finished(response);
+            }
+
         });
     });
 }

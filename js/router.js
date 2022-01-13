@@ -32,6 +32,7 @@ const ui_pages = [
 ];
 
 let database_load_start = undefined;
+let database_count = 0, database_loaded = 0;
 
 function router_handle_url() {
     // Parse the url.
@@ -50,17 +51,22 @@ function router_handle_url() {
 }
 
 function app_ui_cache() {
+    document.getElementById('splash-info').innerHTML = '';
+    document.getElementById('splash-progressbar').style = 'width: 0%';
     // Caching the UI pages at very beginning.
     let ui_cache_counter = 0;
     for(let page_id=0; page_id<ui_pages.length; ++page_id) {
-        app_fetch(ui_pages[page_id]+'.html', function(html_raw_data) {
+        const ui_page_name = ui_pages[page_id]+'.html';
+        app_fetch(ui_page_name, function(html_raw_data, ui_page_name) {
+            document.getElementById('splash-info').innerHTML = ui_page_name;
+            document.getElementById('splash-progressbar').style = 'width: ' + Math.ceil(ui_cache_counter / ui_pages.length * 100).toString() + '%';
             //Ignore the raw data.
             ui_cache_counter += 1;
             if(ui_cache_counter === ui_pages.length) {
                 //Load the core UI.
                 app_ui_init();
             }
-        });
+        }, ui_page_name);
     }
 }
 
@@ -100,16 +106,21 @@ function app_database_init(level) {
         const load_info = database_level_info[loader_id];
         const load_url = '/database/' + load_info[0], assign_callback = load_info[1];
         //Fetch the json data.
-        app_fetch(load_url, function (json_raw_data) {
+        app_fetch(load_url, function (json_raw_data, json_name) {
             //Run the assignment function.
             assign_callback(JSON.parse(json_raw_data));
             // Increase the database counter.
             database_load_counter += 1;
+            database_loaded += 1;
+            //Update the progress bar.
+            document.getElementById('splash-progressbar').style = 'width: ' + Math.ceil(database_loaded / database_count * 100).toString() + '%';
+            document.getElementById('splash-info').innerHTML = json_name
+            //Check level.
             if(database_load_counter === database_level_info.length) {
                 //Load the next level.
                 app_database_init(level + 1);
             }
-        });
+        }, load_info[0]);
     }
 }
 
@@ -130,6 +141,10 @@ function app_init() {
         '.-               -.                                        Release '+release_version.join('.')+'. Powered by hnmr-core '+core_version.join('.')+'.\n' +
         ' ::::.         ::                                          はれちゃんがずっと幸せでいられますように。\n' +
         '      .:.:...::\n', 'color: #db9854');
+    // Count the size of database.
+    for(let i=0; i<database_loader.length; ++i) {
+        database_count += database_loader[i].length;
+    }
     // Load the database to local.
     database_load_start = new Date().getTime();
     app_database_init(0);

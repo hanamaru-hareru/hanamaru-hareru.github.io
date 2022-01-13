@@ -36,10 +36,9 @@ function set_splash_and_start(splash_res) {
 }
 
 function splash_init() {
-    const clientInfo = navigator.userAgent;
-    let handle_splash = clientInfo.indexOf('Android') > -1 || clientInfo.indexOf('iPhone') > -1 || clientInfo.indexOf('iPad') > -1 || clientInfo.indexOf('iPod') > -1;
+    let handle_splash = true;
     //Check temporary disable flag exist.
-    if(handle_splash && app_load_conf(splash_disable_key, false)) {
+    if(app_load_conf(splash_disable_key, false)) {
         //Clear the remove key.
         app_remove_conf(splash_disable_key);
         //Disable the splash.

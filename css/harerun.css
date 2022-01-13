@@ -112,6 +112,24 @@ table > thead {
     height: 100%;
 }
 
+#splash-holder {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#splash-info {
+    opacity: 0.6;
+    font-size: 12px;
+}
+
+#splash-progress {
+    margin-left: auto;
+    margin-right: auto;
+    width: 61.8%;
+    margin-bottom: 2em;
+}
+
 /* NAV Pills */
 .nav-pills>li {
     float: left;
