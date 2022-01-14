@@ -16,6 +16,40 @@ function misc_get_ui_text(name_object, prefer) {
     return name_object[keys[0]];
 }
 
+function misc_omikuji_decide() {
+    // Based on the timestamp of the day, decide the omikuji.
+    let omikuji_timestamp = Number.parseInt(app_load_conf(OMIKUJI_TIME, -1));
+    if(!Number.isInteger(omikuji_timestamp)) {
+        omikuji_timestamp = -1;
+    }
+    //Check whether the timestamp is today.
+    let current_timestamp = Date.now();
+    const current_date = new Date(current_timestamp), omikuji_date = new Date(omikuji_timestamp);
+    if(current_date.getFullYear() !== omikuji_date.getFullYear() || current_date.getMonth() !== omikuji_date.getMonth() || current_date.getDate() !== omikuji_date.getDate()) {
+        // Save the current time as storage time.
+        omikuji_timestamp = current_timestamp;
+        app_set_conf(OMIKUJI_TIME, current_timestamp);
+    }
+    //Now base on the timestamp decide the omikuji.
+    let omikuji_id = (omikuji_timestamp ^ 870806) % 27 + 1, omikuji_path = '/asserts/omikuji/';
+    // For specific days, we will make all id to be 27.
+    if(omikuji_id === 27) {
+        // This is the good luck day, show a random result from the good luck image.
+        let good_luck_id = Math.round(Math.random() * 14) + 1;
+        omikuji_path += 'good_luck/'+good_luck_id+'.png';
+    } else {
+        omikuji_path += omikuji_id+'.png'
+    }
+    document.getElementById('omikuji-image').setAttribute('src', omikuji_path);
+}
+
+function misc_omikuji_once_more() {
+    // Reset the timestamp to -1.
+    app_set_conf(OMIKUJI_TIME, -1);
+    // Decide it again.
+    misc_omikuji_decide();
+}
+
 function misc_init_ui() {
     // Render the headers.
     const nav_ids = ['misc-greeting', 'misc-button', 'misc-omikuji', 'misc-about'];
@@ -53,26 +87,14 @@ function misc_init_ui() {
         document.getElementById('misc-omikuji').classList.add('active');
         document.getElementById('misc-panel-omikuji').removeAttribute('hidden');
         // Set the label.
+        document.getElementById('omikuji-once-more').innerHTML = app_i18n.title_omikuji_once_more;
+        document.getElementById('omikuji-hint').innerHTML = app_i18n.title_omikuji_hint;
         document.getElementById('omikuji-title').innerHTML = app_i18n.title_omikuji;
         for(let i=0; i<app_i18n.title_omikuji_source.length; ++i) {
             document.getElementById('omikuji-source-label-'+i).innerHTML = app_i18n.title_omikuji_source[i];
         }
-        // Based on the timestamp of the day, decide the omikuji.
-        let omikuji_timestamp = Number.parseInt(app_load_conf(OMIKUJI_TIME, -1));
-        if(!Number.isInteger(omikuji_timestamp)) {
-            omikuji_timestamp = -1;
-        }
-        //Check whether the timestamp is today.
-        let current_timestamp = Date.now();
-        const current_date = new Date(current_timestamp), omikuji_date = new Date(omikuji_timestamp);
-        if(current_date.getFullYear() !== omikuji_date.getFullYear() || current_date.getMonth() !== omikuji_date.getMonth() || current_date.getDate() !== omikuji_date.getDate()) {
-            // Save the current time as storage time.
-            omikuji_timestamp = current_timestamp;
-            app_set_conf(OMIKUJI_TIME, current_timestamp);
-        }
-        //Now base on the timestamp decide the omikuji.
-        let omikuji_id = (omikuji_timestamp ^ 870806) % 26 + 1;
-        document.getElementById('omikuji-image').setAttribute('src', '/asserts/omikuji/'+omikuji_id+'.png')
+        //Decide the omikuji.
+        misc_omikuji_decide();
         return;
     }
     if('about' in app_url.args) {

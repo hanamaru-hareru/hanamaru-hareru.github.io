@@ -20,6 +20,8 @@ const jp_translate = {
     footer_resource: '素材提供：',
     title_omikuji: '今日の運勢は',
     title_omikuji_source: ['素材提供：', 'にじあと様', "花丸はれる様の動態"],
+    title_omikuji_hint: '※結果はジョークです',
+    title_omikuji_once_more: 'もう一回',
     title_stream: 'はれるん全ての配信',
     title_calender: 'はれるん配信カレンダ',
     title_single: 'はれるんのシングル',

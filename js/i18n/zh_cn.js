@@ -20,6 +20,8 @@ const zh_cn_translate = {
     footer_resource: '素材提供：',
     title_omikuji: '今天的运势是',
     title_omikuji_source: ['素材来源：', 'にじあと', "花丸晴琉的动态"],
+    title_omikuji_hint: '※抽签结果仅供娱乐',
+    title_omikuji_once_more: '再来一次',
     title_stream: '花丸的全部直播',
     title_calender: '花丸直播日历',
     title_single: '花丸的单曲',

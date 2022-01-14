@@ -490,8 +490,17 @@ button > * {
     width: 100%;
 }
 
-#omikuji-source {
+#omikuji-hint {
     margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#omikuji-source {
+    margin-top: 0;
+}
+
+#omikuji-once-more {
+    margin-top: 15px;
 }
 
 /* voice buttons */

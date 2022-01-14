@@ -20,6 +20,8 @@ const en_translate = {
     footer_resource: 'Resource used from: ',
     title_omikuji: 'Your fortune of the day is',
     title_omikuji_source: ['Resource from: ', 'Niziato', "Hanamaru Hareru's DongTai"],
+    title_omikuji_hint: '※The result is a joke',
+    title_omikuji_once_more: 'Once more',
     title_stream: 'All Harerun Streams',
     title_calender: 'Hanamaru Stream Calender',
     title_single: "Harerun's single songs",
