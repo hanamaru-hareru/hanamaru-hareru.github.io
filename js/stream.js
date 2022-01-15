@@ -35,6 +35,7 @@ function slides_render() {
 
     // Render the indicator and slides.
     let indicator = [], item_data = [];
+    const timestamp = new Date().getTime().toString();
     for(let i=0; i<slides.records.length; ++i) {
         // Dot
         let indicator_class = (i === 0) ? " active" : "";
@@ -44,7 +45,7 @@ function slides_render() {
         if(slide_title.startsWith('$#')) {
             slide_title = slide_title.substr(2);
             //Update the image url.
-            image_url = '/asserts/slides/' + slide_title + '.png';
+            image_url = '/asserts/slides/' + slide_title + '.png?dev=' + timestamp;
             //Check the title is valid or not.
             if(slide_title === 'last_live' || slide_title === 'last_song_live') {
                 //Find the last live but not song stream.
