@@ -31,7 +31,7 @@ function misc_omikuji_decide() {
         app_set_conf(OMIKUJI_TIME, current_timestamp);
     }
     //Now base on the timestamp decide the omikuji.
-    let omikuji_id = (omikuji_timestamp ^ 870806) % 27 + 1, omikuji_path = '/asserts/omikuji/';
+    let omikuji_id = (Math.abs(omikuji_timestamp ^ 870806)) % 27 + 1, omikuji_path = '/asserts/omikuji/';
     // For specific days, we will make all id to be 27.
     if(omikuji_id === 27) {
         // This is the good luck day, show a random result from the good luck image.

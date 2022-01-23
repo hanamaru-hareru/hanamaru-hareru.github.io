@@ -6,7 +6,7 @@ const jp_translate = {
     contacts: ['Twitter', 'Youtube', 'Bilibili', 'FANBOX'],
     navbar: ['配信', 'カレンダ', 'シングル', 'セトリ', '雑物'],
     navbar_song_list: ['セトリ', '曲', 'メドレ曲', '全ての曲', '統計'],
-    navbar_statistic: ['配信限定曲', '配信限定メドレ', 'メドレ限定'],
+    navbar_statistic: ['配信限定曲', 'メドレ限定曲'],
     navbar_misc: ['配信あいさつ', 'はれるんボタン', 'おみくじ', 'サイト情報'],
     song_record_table_title: ['曲名', '最後に歌った日', '全回数', 'Youtubeでの回数', 'Bilibiliでの回数'],
     footer_title: ['公式ストア', 'はれるんチャネル', '配信ルーム'],
