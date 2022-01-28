@@ -35,7 +35,7 @@ function forecast_render() {
     for(let i=0; i<forecast.records.length; ++i) {
         const forecast_item = forecast.records[i];
         //The time is JST.
-        if(forecast_is_today(local_date, forecast_item.date)) {
+        if(forecast_is_today(local_date, forecast_item.local_time)) {
             today_list.push(forecast_item);
         } else {
             display_list.push(forecast_item);
