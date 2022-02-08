@@ -230,7 +230,8 @@ function convert_hiragana_to_katakana(raw_text) {
     for(let i=0; i<hiragana_to_katakana.length; ++i) {
         const map_rule = hiragana_to_katakana[i];
         //Apply replacement.
-        raw_text = raw_text.replaceAll(map_rule[0], map_rule[1]);
+        let re = new RegExp(map_rule[0], 'g');
+        raw_text = raw_text.replace(re, map_rule[1]);
     }
     return raw_text;
 }
