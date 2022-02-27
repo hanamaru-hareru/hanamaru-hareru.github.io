@@ -1,16 +1,16 @@
 [
   {
     "platform": "b",
-    "date": "2022-02-22",
-    "time": "21:00",
-    "title": "猫曲歌回",
-    "url": ""
-  },
-  {
-    "platform": "b",
     "date": "2022-02-27",
     "time": "21:00",
     "title": "原神",
+    "url": ""
+  },
+  {
+    "platform": "f",
+    "date": "2022-02-28",
+    "time": "23:00",
+    "title": "FANBOX限定配信",
     "url": ""
   }
 ]
