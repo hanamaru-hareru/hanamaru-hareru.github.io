@@ -89,6 +89,7 @@ function sl_song_info_load_data(song_info_data) {
     for(let i=0; i<song_ids.length; ++i) {
         let song_data = song_info_data[song_ids[i]];
         song_data.k = convert_hiragana_to_katakana(song_data.k);
+        song_data.a = convert_hiragana_to_katakana(song_data.a.toLowerCase());
         song_info_data[song_ids[i]] = song_data;
     }
     song_list.details = song_info_data;

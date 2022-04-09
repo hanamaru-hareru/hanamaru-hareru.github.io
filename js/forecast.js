@@ -117,6 +117,9 @@ function forecast_load_data(forecast_data) {
             } else if(forecast_data[i].platform === "f") {
                 //FANBOX live, the URL uses FANBOX page instead.
                 forecast_data[i].url = "https://www.fanbox.cc/@hanamaruhareru";
+            } else if(forecast_data[i].platform === "y") {
+                //Youtube live, the URL can use this if it is not provided.
+                forecast_data[i].url = "https://www.youtube.com/channel/UCyIcOCH-VWaRKH9IkR8hz7Q/live";
             }
         }
         valid_forecast.push(forecast_data[i]);
