@@ -1,7 +1,18 @@
 let forecast = {records: []};
 
-function forecast_is_today(today, forecast_day) {
-    return today.getFullYear() === forecast_day.getFullYear() && today.getMonth() === forecast_day.getMonth() && today.getDate() === forecast_day.getDate();
+function forecast_is_today(today, forecast_day, next_day) {
+    //Check whether the date is matching today's time.
+    if(today.getFullYear() === forecast_day.getFullYear() && today.getMonth() === forecast_day.getMonth() && today.getDate() === forecast_day.getDate())
+    {
+        return true;
+    }
+    //Or, the date is next day, but the time is less than 06:00 A.M.
+    if(next_day.getFullYear() === forecast_day.getFullYear() && next_day.getMonth() === forecast_day.getMonth() && next_day.getDate() === forecast_day.getDate())
+    {
+        //Check the hour is less than 6.
+        return forecast_day.getHours() < 6;
+    }
+    return false;
 }
 
 function forecast_is_valid(today, forecast_day) {
@@ -24,18 +35,28 @@ function forcast_time_to_str(stime) {
     '('+app_i18n.day_of_the_week[stime.getDay()]+') '+ stime.getHours()+':'+time_str_minsec(stime.getMinutes())
 }
 
+function forecast_compare(a, b) {
+    return a.timestamp - b.timestamp;
+}
+
 function forecast_render() {
     // Check the forecast result.
     if(forecast.records.length === 0) {
         return;
     }
     let display_list = [], today_list = [];
-    const local_date = new Date();
+    let local_date = new Date();
+    local_date = new Date(local_date.getFullYear()+"-"+(local_date.getMonth()+1)+"-"+local_date.getDate())
+    let next_local_date = new Date(local_date.getTime() + 86400000);
+    for(let i=0; i<forecast.records.length; ++i) {
+        forecast.records[i].timestamp = forecast.records[i].jst_time.getTime();
+    }
+    forecast.records.sort(forecast_compare);
     //Convert the forecast date to date.
     for(let i=0; i<forecast.records.length; ++i) {
         const forecast_item = forecast.records[i];
         //The time is JST.
-        if(forecast_is_today(local_date, forecast_item.local_time)) {
+        if(forecast_is_today(local_date, forecast_item.local_time, next_local_date)) {
             today_list.push(forecast_item);
         } else {
             display_list.push(forecast_item);
