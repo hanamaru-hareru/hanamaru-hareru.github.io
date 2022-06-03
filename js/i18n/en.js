@@ -48,7 +48,7 @@ const en_translate = {
 
     jst: function(n) { return `(JST: ${n})`; },
 
-    count_first_v: function(n) { return `${n} days since Harerun uploaded the first video.`; },
+    count_first_v: function(n) { return `${n} days since Harerun's debut.`; },
     count_first_y: function(n) { return `${n} days since Harerun's first live stream.`; },
     count_first_b: function(n) { return `${n} days since Harerun's first live stream on BiliBili.`; },
 

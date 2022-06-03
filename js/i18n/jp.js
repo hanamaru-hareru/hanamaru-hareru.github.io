@@ -48,7 +48,7 @@ const jp_translate = {
 
     jst: function(n) { return `（日本標準時：${n}）`; },
 
-    count_first_v: function(n) { return `はれるんが最初の動画を公開してからもう ${n} 日`; },
+    count_first_v: function(n) { return `はれるんデビューからもう ${n} 日`; },
     count_first_y: function(n) { return `最初の配信からはもう ${n} 日`; },
     count_first_b: function(n) { return `BiliBiliでの最初の配信からはもう ${n} 日`; },
 
