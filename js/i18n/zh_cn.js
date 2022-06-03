@@ -49,6 +49,10 @@ const zh_cn_translate = {
 
     jst: function(n) { return `（日本标准时间：${n}）`; },
 
+    count_first_v: function(n) { return `距离花丸上传第一个视频已经 ${n} 天`; },
+    count_first_y: function(n) { return `距离花丸第一次直播已经 ${n} 天`; },
+    count_first_b: function(n) { return `距离花丸第一次B站直播已经 ${n} 天`; },
+
     search_stream: '搜索全部直播',
     search_stream_count: function(n) { return `${n} 个结果`; },
     search_single: '搜索单曲',

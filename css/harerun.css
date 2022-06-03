@@ -578,6 +578,18 @@ button > * {
     }
 }
 
+#day-counter div {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: large;
+}
+
+#day-counter {
+    margin-bottom: 20px;
+}
+
 #calender-head th {
     text-align: center;
     width: 14%;
