@@ -149,6 +149,8 @@ function load_streams() {
         slides_render();
         // Render the forecast.
         forecast_render();
+        // Render the day counter.
+        day_counter_render();
         // Prepare the search box.
         let search_box = document.getElementById('stream-search');
         search_box.setAttribute('placeholder', app_i18n.search_stream);
