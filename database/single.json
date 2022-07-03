@@ -222,9 +222,15 @@
     "b_url": "https://www.bilibili.com/video/BV18Y4y157PR"
   },
   {
-    "title": "Mixed Nuts",
+    "title": "Mixed Nuts (cover)",
     "img": "/asserts/single-cover/38.jpg",
     "y_url": "https://www.youtube.com/watch?v=ixNjIcFhBb0",
     "b_url": "https://www.bilibili.com/video/BV1H34y1j7Mt"
+  },
+  {
+    "title": "刻在我心底的名字 (cover)",
+    "img": "/asserts/single-cover/39.jpg",
+    "y_url": "https://www.youtube.com/watch?v=QW4AaO13cZI",
+    "b_url": "https://www.bilibili.com/video/BV1Ev4y1T7tK"
   }
 ]

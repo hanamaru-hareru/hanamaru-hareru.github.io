@@ -1,24 +1,14 @@
-[
-  {
-    "img": "/asserts/slides/200w.jpg",
-    "title": "祝「孤勇者」bilibili播放量突破200万！YouTube上播放量突破50万！",
+[{
+    "img": "/asserts/single-cover/39.jpg",
+    "title": "刻在我心底的名字 ／盧廣仲　Covered by 花丸晴琉",
     "text": "",
     "url": "",
-    "bilibili-url": "https://www.bilibili.com/video/BV183411t7Cv",
-    "youtube-url": "https://www.youtube.com/watch?v=-JNeRehLaok"
-  },
-  {
-    "img": "/asserts/single-cover/38.jpg",
-    "title": "Mixed Nuts／Official髭男dism　Covered by 花丸晴琉",
-    "text": "",
-    "url": "",
-    "bilibili-url": "https://www.bilibili.com/video/BV1H34y1j7Mt",
-    "youtube-url": "https://www.youtube.com/watch?v=ixNjIcFhBb0"
+    "bilibili-url": "https://www.bilibili.com/video/BV1Ev4y1T7tK",
+    "youtube-url": "https://www.youtube.com/watch?v=QW4AaO13cZI"
   },
   {
     "title": "$#last_live"
   },
   {
     "title": "$#last_song_live"
-  }
-]
+  }]
