@@ -68,7 +68,7 @@ function app_ui_init() {
 }
 
 const ui_pages = [
-    'stream'
+    'calender', 'misc', 'setori', 'single', 'song-detail', 'song-list', 'song-statistic', 'song-view', 'stream'
 ];
 
 function app_ui_cache() {
