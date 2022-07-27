@@ -94,7 +94,7 @@ button > * {
 }
 
 body {
-    /*font-family: var(--bs-body-font-family);*/
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     font-size: var(--body-font-size);
     font-weight: var(--body-font-weight);
     line-height: var(--body-line-height);
@@ -151,7 +151,7 @@ p {
 
 #scene-splash {
     background: #ffcf4f;
-    z-index: 1080;
+    z-index: 870;
 }
 
 #splash-icon {
@@ -295,7 +295,7 @@ p {
 header {
     background-color: #f8f8f8;
     width: 100%;
-    z-index: 1024;
+    z-index: 806;
     text-align: center;
     height: var(--header-height);
 }
@@ -1164,7 +1164,7 @@ table>:not(:first-child) {
     #hareru-banner {
         display: none;
     }
-    .scene {
+    #scene-main {
         margin-bottom: var(--header-height);
     }
     header .nav-link {
