@@ -689,6 +689,10 @@ table>:not(:first-child) {
     background-color: rgba(var(--light-color), 0.4)!important;
 }
 
+.calender-today {
+    background-color: rgba(var(--light-color), 0.2)!important;
+}
+
 .calender-dropdown {
     position: relative;
     display: inline-block;
@@ -1118,6 +1122,9 @@ table>:not(:first-child) {
     #app-panel {
         margin-top: -15px;
         padding-top: 15px;
+    }
+    .ios-padding {
+        padding-bottom: 12px;
     }
     /* Banner */
     #mobile-links {

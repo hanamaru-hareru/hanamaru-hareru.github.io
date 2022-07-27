@@ -106,7 +106,7 @@ function app_refresh_language(combo_name) {
     app_set_conf('language', document.getElementById(combo_name).value);
     //Refresh the current page.
     app_set_conf(splash_disable_key, true);
-    window.location.reload();
+    app_reload();
 
 }
 
@@ -163,6 +163,10 @@ function app_reload() {
     window.location.reload();
 }
 
+function is_on_ios() {
+    return navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
+}
+
 //System UI render.
 const navbar_ids = ['stream', 'calender', 'single', 'songs', 'misc'];
 function render_header() {
@@ -176,6 +180,10 @@ function render_header() {
         // Update the button label.
         let nav_item = document.getElementById('nav-' + navbar_ids[i]);
         nav_item.innerHTML = navbar_names[i];
+    }
+    //Detect whether the website is running on iOS.
+    if(is_on_ios()) {
+        document.getElementById('app-header').classList.add('ios-padding');
     }
 }
 
