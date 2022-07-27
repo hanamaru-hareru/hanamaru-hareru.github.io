@@ -163,10 +163,6 @@ function app_reload() {
     window.location.reload();
 }
 
-function is_on_ios() {
-    return navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
-}
-
 //System UI render.
 const navbar_ids = ['stream', 'calender', 'single', 'songs', 'misc'];
 function render_header() {
