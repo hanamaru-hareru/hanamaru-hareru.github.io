@@ -11,13 +11,21 @@
     --light-2: rgba(var(--light-color), 0.8);
     --light-3: rgba(var(--light-color), 0.7);
     --light-4: rgba(var(--light-color), 0.6);
+    --light-filter: invert(70%) sepia(56%) saturate(5778%) hue-rotate(333deg) brightness(109%) contrast(102%);
 }
 
-.harerun-banner {
+#hareru-banner {
     background-image: url("/asserts/halloween_banner.png");
     background-repeat: no-repeat;
     background-size:cover;
     background-position: center center;
     min-height: 160px;
     height: calc(100vw / 6.2);
+}
+
+#mobile-banner {
+    background-image: url("/asserts/halloween_banner.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
 }

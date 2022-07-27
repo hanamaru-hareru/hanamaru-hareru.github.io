@@ -98,7 +98,7 @@ body {
     font-size: var(--body-font-size);
     font-weight: var(--body-font-weight);
     line-height: var(--body-line-height);
-    background-color: rgb(var(--main-color));
+    background-color: rgba(var(--main-color));
     text-align: center;
     text-shadow: 0 1px 3px rgb(0 0 0 / 50%);
 }
@@ -337,12 +337,6 @@ header .nav-item.active a {
 
 /* Banner */
 #hareru-banner {
-    background-image: url("/asserts/banner.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    min-height: 160px;
-    height: calc(100vw / 6.2);
     box-shadow: inset 0 -.5rem 1rem rgba(0,0,0,.15)!important;
 }
 
@@ -372,7 +366,8 @@ header .nav-item.active a {
 
 /* main panel */
 #app-panel {
-    background-color: rgba(255,255,255,0.8);
+    color: rgb(var(--text-color));
+    background-color: rgba(var(--background-color));
     box-sizing: border-box;
 }
 
@@ -593,7 +588,7 @@ table {
     --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
     width: 100%;
     margin-bottom: 1rem;
-    color: var(--bs-table-color);
+    color: rgb(var(--text-color));
     vertical-align: top;
     border-color: var(--bs-table-border-color);
     border-collapse: collapse;
@@ -783,7 +778,7 @@ table>:not(:first-child) {
 
 .col {
     box-sizing: border-box;
-    color: #000;
+    color: rgb(var(--text-color));
     max-width: 100%;
     padding-right: calc(var(--bs-gutter-x) * .5);
     padding-left: calc(var(--bs-gutter-x) * .5);
@@ -962,7 +957,7 @@ table>:not(:first-child) {
         padding-bottom: 1em;
     }
 
-    #mobile-banner, #mobile-links {
+    #mobile-banner, #mobile-links, #mobile-foreground {
         display: none;
     }
 
@@ -1131,12 +1126,13 @@ table>:not(:first-child) {
         text-align: center;
     }
     #mobile-links button {
+        background-color: rgb(var(--button-color));
         margin-right: 0;
         padding-left: 8px;
         padding-right: 8px;
     }
     #mobile-links a {
-        color: #fff;
+        color: rgb(var(--text-color));
     }
 
     /*header*/

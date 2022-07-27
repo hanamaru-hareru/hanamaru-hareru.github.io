@@ -1,7 +1,7 @@
 :root {
     --main-color: 245, 165, 104;
     --light-color: 245, 165, 104;
-    --background-color: 240, 240, 240;
+    --background-color: 255, 255, 255, 0.8;
     --text-color: 0, 0, 0;
     --button-color: 255, 255, 255;
     --button-text: 0, 0, 0;
@@ -14,11 +14,18 @@
     --light-filter: invert(73%) sepia(20%) saturate(1280%) hue-rotate(334deg) brightness(100%) contrast(93%);
 }
 
-.harerun-banner {
+#hareru-banner {
     background-image: url("/asserts/banner.jpg");
     background-repeat: no-repeat;
     background-size:cover;
     background-position: center center;
     min-height: 160px;
     height: calc(100vw / 6.2);
+}
+
+#mobile-banner {
+    background-image: url("/asserts/mobile-banner.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
 }
