@@ -48,9 +48,9 @@ const jp_translate = {
 
     jst: function(n) { return `（日本標準時：${n}）`; },
 
-    count_first_v: function(n) { return `はれるんデビューからもう ${n} 日`; },
-    count_first_y: function(n) { return `最初の配信からはもう ${n} 日`; },
-    count_first_b: function(n) { return `BiliBiliでの最初の配信からはもう ${n} 日`; },
+    count_first_v: function(n) { return `はれるんデビューからは ${n} 日`; },
+    count_first_y: function(n) { return `最初の配信からは ${n} 日`; },
+    count_first_b: function(n) { return `BiliBiliでの最初の配信からは ${n} 日`; },
 
     search_stream: '全ての配信を検索',
     search_stream_count: function(n) { return `${n} 件`; },
