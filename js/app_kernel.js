@@ -226,6 +226,8 @@ function app_load_panel(panel_url, callback) {
         if(callback !== null) {
             callback();
         }
+        //Scroll the panel back to the top.
+        document.getElementById('scene-main').scrollTop = 0;
         //Once the panel load is complete, need to hide the splash screen.
         splash_hide();
     });
