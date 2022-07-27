@@ -34,9 +34,11 @@ function splash_boot() {
     let handle_splash = true;
     //When website is on iOS, disable the navigation gesture.
     if(is_on_ios()) {
-        document.getElementById('page-body').addEventListener('touchstart', (e) => {
-            e.preventDefault();
-        });
+        if (window.navigator.standalone) {
+            document.getElementById('page-body').addEventListener('touchstart', (e) => {
+                e.preventDefault();
+            });
+        }
     }
     //Check temporary disable flag exist.
     if(app_load_conf(splash_disable_key, false)) {
