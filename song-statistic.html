@@ -1,0 +1,67 @@
+<nav>
+    <ul class="nav nav-pills">
+        <li id="sl-s-songs"><a id="sl-s-songs-label" href="#song-statistic"></a></li>
+        <li id="sl-s-medley-only"><a id="sl-s-medley-only-label" href="#song-statistic&medley-only"></a></li>
+    </ul>
+</nav>
+<div id="sl-s-limited" class="container" hidden>
+    <div id="sl-s-song-chart-area">
+        <canvas id="sl-s-song-chart" width="120"></canvas>
+    </div>
+    <div class="row no-horizontal-margin">
+        <div class="col-lg-6">
+            <h3 id="sl-youtube-limited-title"></h3>
+            <div id="sl-youtube-count" class="search-counter"></div>
+            <div class="table-responsive">
+                <table class="table table-striped table-borderless">
+                    <thead>
+                    <tr>
+                        <th id="sl-y-header-0"></th>
+                        <th id="sl-y-header-1"></th>
+                        <th id="sl-y-header-2"></th>
+                        <th id="sl-y-header-3"></th>
+                        <th id="sl-y-header-4"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="sl-youtube-songs"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h3 id="sl-bilibili-limited-title"></h3>
+            <div id="sl-bilibili-count" class="search-counter"></div>
+            <div class="table-responsive">
+                <table class="table table-striped table-borderless">
+                    <thead>
+                    <tr>
+                        <th id="sl-b-header-0"></th>
+                        <th id="sl-b-header-1"></th>
+                        <th id="sl-b-header-2"></th>
+                        <th id="sl-b-header-3"></th>
+                        <th id="sl-b-header-4"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="sl-bilibili-songs"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="sl-m-limited" hidden>
+    <h3 id="sl-m-limited-title"></h3>
+    <div id="sl-m-count"></div>
+    <div class="table-responsive">
+        <table class="table table-striped table-borderless">
+            <thead>
+            <tr>
+                <th id="sl-m-header-0"></th>
+                <th id="sl-m-header-1"></th>
+                <th id="sl-m-header-2"></th>
+                <th id="sl-m-header-3"></th>
+                <th id="sl-m-header-4"></th>
+            </tr>
+            </thead>
+            <tbody id="sl-medley-songs"></tbody>
+        </table>
+    </div>
+</div>

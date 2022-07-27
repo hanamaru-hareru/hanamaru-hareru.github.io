@@ -1,0 +1,23 @@
+:root {
+    --main-color: 43, 144, 204;
+    --light-color: 161, 198, 225;
+    --background-color: 16, 74, 132;
+    --text-color: 255, 255, 255;
+    --button-color: 19, 96, 174;
+    --button-text: 255, 255, 255;
+    --hint-color: 146, 181, 206;
+    --light-0: rgba(var(--light-color), 1.0);
+    --light-1: rgba(var(--light-color), 0.9);
+    --light-2: rgba(var(--light-color), 0.8);
+    --light-3: rgba(var(--light-color), 0.7);
+    --light-4: rgba(var(--light-color), 0.6);
+}
+
+.harerun-banner {
+    background-image: url("/asserts/christmas-banner.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
+    min-height: 160px;
+    height: calc(100vw / 6.2);
+}

@@ -1,0 +1,23 @@
+:root {
+    --main-color: 255,115,70;
+    --light-color: 225, 123, 66;
+    --background-color: 0, 0, 0;
+    --text-color: 255, 255, 255;
+    --button-color: 30, 30, 30;
+    --button-text: 255, 255, 255;
+    --hint-color: 112, 117, 112;
+    --light-0: rgba(var(--light-color), 1.0);
+    --light-1: rgba(var(--light-color), 0.9);
+    --light-2: rgba(var(--light-color), 0.8);
+    --light-3: rgba(var(--light-color), 0.7);
+    --light-4: rgba(var(--light-color), 0.6);
+}
+
+.harerun-banner {
+    background-image: url("/asserts/halloween_banner.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
+    min-height: 160px;
+    height: calc(100vw / 6.2);
+}

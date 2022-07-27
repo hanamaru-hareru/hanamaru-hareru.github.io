@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="saki">
+    <link rel="icon" href="favicon.png">
+    <!-- iOS Web App support -->
+    <link rel="apple-touch-icon" href="ios-icon.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="1024x1024" href="touch-icon-1024x1024.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="花丸はれるまとめ">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>花丸はれるまとめ</title>
+    <!-- CSS -->
+    <link href="css/harerun.css?ver=1" rel="stylesheet" crossorigin="anonymous">
+    <script type="text/javascript" src="js/theme-loader.js?dev=220601"></script>
+</head>
+<body>
+<div class="scene" id="scene-splash">
+    <img src="splash-icon.png" id="splash-icon" />
+    <div id="splash-loader">
+        <p id="splash-info"></p>
+        <div id="splash-progress">
+            <div id="splash-progressbar"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/app_boot.js?dev=220601"></script>
+<div class="scene" id="scene-main">
+    <header>
+        <div class="container">
+            <a id="nav-brand"></a>
+            <div id="navbar">
+                <ul>
+                    <li id="item-stream" class="nav-item active"><a class="nav-link" aria-current="page" href="#" id="nav-stream"></a></li>
+                    <li id="item-calender" class="nav-item"><a class="nav-link" href="#calender" id="nav-calender"></a></li>
+                    <li id="item-single" class="nav-item"><a class="nav-link" href="#single" id="nav-single"></a></li>
+                    <li id="item-songs" class="nav-item"><a class="nav-link" href="#setori" id="nav-songs"></a></li>
+                    <li id="item-misc" class="nav-item"><a class="nav-link" href="#misc" id="nav-misc"></a></li>
+                    <select class="language-select" id="nav-language" onchange="app_refresh_language('nav-language')">
+                    </select>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div id="hareru-banner">
+        <div class="container">
+            <div id="hareru-links">
+                <button type="button" class="btn hnmr-btn"><a class="button-icon icon-twitter"></a><a id="harerun-twitter"></a></button>
+                <button type="button" class="btn hnmr-btn"><a class="button-icon icon-youtube"></a><a id="harerun-youtube"></a></button>
+                <button type="button" class="btn hnmr-btn"><a class="button-icon icon-bilibili"></a><a id="harerun-bilibili"></a></button>
+                <button type="button" class="btn hnmr-btn"><a class="button-icon icon-fanbox"></a><a id="harerun-fanbox"></a></button>
+            </div>
+        </div>
+    </div>
+    <div id="app-panel"></div>
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <div class="footer-row">
+                    <h5 id="f-stores"></h5>
+                    <li><a id="f-booth" href="https://hanamaruhareru.booth.pm/" target="_blank"></a></li>
+                    <li><a id="f-fanbox" href="https://hanamaruhareru.fanbox.cc/" target="_blank"></a></li>
+                </div>
+                <div class="footer-row">
+                    <h5 id="f-channels"></h5>
+                    <li><a id="f-twitter" href="https://twitter.com/hanamaruhareru" target="_blank"></a></li>
+                    <li><a id="f-twitcasting" href="https://twitcasting.tv/c:hanamaruhareru" target="_blank" hidden></a></li>
+                    <li><a id="f-youtube" href="https://www.youtube.com/channel/UCyIcOCH-VWaRKH9IkR8hz7Q" target="_blank"></a></li>
+                    <li><a id="f-bilibili" href="https://space.bilibili.com/441381282" target="_blank"></a></li>
+                </div>
+                <div class="footer-row">
+                    <h5 id="f-lives-info"></h5>
+                    <li><a id="f-bilibili-schedule" href="https://live.bilibili.com/p/html/live-web-calendar/index.html#/search?id=441381282" target="_blank"></a></li>
+                    <li><a id="f-bilibili-live" href="https://live.bilibili.com/21547895" target="_blank"></a></li>
+                </div>
+            </div>
+            <p id="f-license"></p>
+        </div>
+    </footer>
+</div>
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- Language UI -->
+<script type="text/javascript" src="js/i18n/zh_cn.js?dev=220601"></script>
+<script type="text/javascript" src="js/i18n/jp.js?dev=220601"></script>
+<script type="text/javascript" src="js/i18n/en.js?dev=220601"></script>
+<!-- App Components -->
+<script type="text/javascript" src="js/app_kernel.js?dev=220601"></script>
+<script type="text/javascript" src="js/chart.min.js?dev=220601"></script>
+<script type="text/javascript" src="js/voice-button.js?dev=220601"></script>
+<script type="text/javascript" src="js/song-list.js?dev=220601"></script>
+<script type="text/javascript" src="js/forecast.js?dev=220601"></script>
+<script type="text/javascript" src="js/stream.js?dev=220601"></script>
+<script type="text/javascript" src="js/calender.js?dev=220601"></script>
+<script type="text/javascript" src="js/single.js?dev=220601"></script>
+<script type="text/javascript" src="js/misc.js?dev=220601"></script>
+<script type="text/javascript" src="js/app_database.js?dev=220601"></script>
+<script type="text/javascript" src="js/router.js?dev=220601"></script>
+<script>
+    // The application boots here.
+    splash_boot();
+</script>
+</body>
+</html>

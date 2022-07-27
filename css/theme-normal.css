@@ -1,0 +1,24 @@
+:root {
+    --main-color: 245, 165, 104;
+    --light-color: 245, 165, 104;
+    --background-color: 240, 240, 240;
+    --text-color: 0, 0, 0;
+    --button-color: 255, 255, 255;
+    --button-text: 0, 0, 0;
+    --hint-color: 112, 117, 112;
+    --light-0: rgba(var(--light-color), 1.0);
+    --light-1: rgba(var(--light-color), 0.9);
+    --light-2: rgba(var(--light-color), 0.8);
+    --light-3: rgba(var(--light-color), 0.7);
+    --light-4: rgba(var(--light-color), 0.6);
+    --light-filter: invert(73%) sepia(20%) saturate(1280%) hue-rotate(334deg) brightness(100%) contrast(93%);
+}
+
+.harerun-banner {
+    background-image: url("/asserts/banner.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
+    min-height: 160px;
+    height: calc(100vw / 6.2);
+}

@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="container-spacing"></div>
+    <div id="forecast"></div>
+    <div id="calender-month-selector">
+        <span class="calender-dropdown">
+            <select class="calender-select" id="year-display" onchange="calender_change()">
+            </select>
+        </span>
+        <span class="calender-dropdown">
+            <select class="calender-select" id="month-display" onchange="calender_change()">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+        </span>
+    </div>
+    <table id="horizontal-calender" class="table table-striped table-borderless">
+        <thead id="calender-head"></thead>
+        <tbody id="calender-days"></tbody>
+    </table>
+    <ul id="calender-view-type" class="nav nav-pills">
+        <li id="calender-view-0" class=""><a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+            </svg>
+        </a></li>
+        <li id="calender-view-1" class=""><a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+            </svg>
+        </a></li>
+    </ul>
+    <div id="calender-day-view" hidden>
+        <div class="table-responsive">
+            <table id="calender-day-viewer" class="table table-striped table-borderless">
+                <thead id="calender-day-head"></thead>
+                <tbody id="calender-day-items"></tbody>
+            </table>
+        </div>
+        <table id="calender-day-details" class="table table-striped table-borderless">
+        </table>
+    </div>
+    <table id="vertical-calender" class="table table-striped table-borderless" hidden>
+        <tbody id="vertical-days">
+        </tbody>
+    </table>
+</div>

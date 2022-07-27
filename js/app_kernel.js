@@ -1,0 +1,253 @@
+const release_version = [4, 0, 220222];
+const core_version = [4, 0, 0];
+
+/* Basic functions */
+function time_str_minsec(min_or_sec) {
+    if (min_or_sec < 10) {
+        return '0' + min_or_sec.toString();
+    }
+    return min_or_sec.toString();
+}
+
+const hiragana_to_katakana = [
+    //Combined
+    ["きゃ", "キャ"], ["きゅ", "キュ"], ["きょ", "キョ"],
+    ["ぎゃ", "ギャ"], ["ぎゅ", "ギュ"], ["ぎょ", "ギョ"],
+    ["しゃ", "シャ"], ["しゅ", "シュ"], ["しょ", "ショ"],
+    ["じゃ", "ジャ"], ["じゅ", "ジュ"], ["じょ", "ジョ"],
+    ["ちゃ", "チャ"], ["ちゅ", "チュ"], ["ちょ", "チョ"],
+    ["にゃ", "ニャ"], ["にゅ", "ニュ"], ["にょ", "ニョ"],
+    ["ひゃ", "ヒャ"], ["ひゅ", "ヒュ"], ["ひょ", "ヒョ"],
+    ["びゃ", "ビャ"], ["びゅ", "ビュ"], ["びょ", "ビョ"],
+    ["ぴゃ", "ピャ"], ["ぴゅ", "ピュ"], ["ぴょ", "ピョ"],
+    ["みゃ", "ミャ"], ["みゅ", "ミュ"], ["みょ", "ミョ"],
+    ["りゃ", "リャ"], ["りゅ", "リュ"], ["りょ", "リョ"],
+    //Single.
+    ["あ", "ア"], ["い", "イ"], ["う", "ウ"], ["え", "エ"], ["お", "オ"],
+    ["か", "カ"], ["き", "キ"], ["く", "ク"], ["け", "ケ"], ["こ", "コ"],
+    ["さ", "サ"], ["し", "シ"], ["す", "ス"], ["せ", "セ"], ["そ", "ソ"],
+    ["た", "タ"], ["ち", "チ"], ["つ", "ツ"], ["て", "テ"], ["と", "ト"],
+    ["な", "ナ"], ["に", "ニ"], ["ぬ", "ヌ"], ["ね", "ネ"], ["の", "ノ"],
+    ["は", "ハ"], ["ひ", "ヒ"], ["ふ", "フ"], ["へ", "ヘ"], ["ほ", "ホ"],
+    ["ま", "マ"], ["み", "ミ"], ["む", "ム"], ["め", "メ"], ["も", "モ"],
+    ["や", "ヤ"], ["ゆ", "ユ"], ["よ", "ヨ"], ["ら", "ラ"], ["り", "リ"],
+    ["る", "ル"], ["れ", "レ"], ["ろ", "ロ"], ["わ", "ワ"], ["を", "ヲ"],
+    ["ん", "ン"], ["が", "ガ"], ["ぎ", "ギ"], ["ぐ", "グ"], ["げ", "ゲ"],
+    ["ご", "ゴ"], ["ざ", "ザ"], ["じ", "ジ"], ["ず", "ズ"], ["ぜ", "ゼ"],
+    ["ぞ", "ゾ"], ["だ", "ダ"], ["ぢ", "ヂ"], ["づ", "ヅ"], ["で", "デ"],
+    ["ど", "ド"], ["ば", "バ"], ["び", "ビ"], ["ぶ", "ブ"], ["べ", "ベ"],
+    ["ぼ", "ボ"], ["ぱ", "パ"], ["ぴ", "ピ"], ["ぷ", "プ"], ["ぺ", "ペ"],
+    ["ぽ", "ポ"],
+]
+
+function convert_hiragana_to_katakana(raw_text) {
+    if(raw_text === undefined) {
+        return '';
+    }
+    //Loop for all the rules.
+    for(let i=0; i<hiragana_to_katakana.length; ++i) {
+        const map_rule = hiragana_to_katakana[i];
+        //Apply replacement.
+        let re = new RegExp(map_rule[0], 'g');
+        raw_text = raw_text.replace(re, map_rule[1]);
+    }
+    return raw_text;
+}
+
+function app_hyperlink(url) {
+    if(url.length === 0) {
+        return '<a>'
+    }
+    return '<a href="' + url + '" target="_blank" rel="noreferrer noopener">';
+}
+
+function app_open_url(url) {
+    window.open(url, '_blank');
+}
+
+function app_archive_url(y_url, b_url, expected) {
+    //Check empty.
+    if(y_url.length === 0) {
+        return b_url;
+    }
+    if(b_url.length === 0) {
+        return y_url;
+    }
+    //Both are available.
+    if(app_i18n.force_bilibili || expected === 'b') {
+        //When force or expect to use bilibili, then use b url.
+        return b_url;
+    }
+    //Otherwise, youtube url.
+    return y_url;
+}
+
+/* i18n supports */
+let app_i18n = null;
+
+const i18n_map = {
+    'zh_cn': zh_cn_translate,
+    'jp': jp_translate,
+    'en': en_translate,
+}
+
+function browser_language() {
+    const browser_flag = navigator.language;
+    if(browser_flag.startsWith('en-')) {
+        return 'en';
+    }
+    if(browser_flag.startsWith('zh-')) {
+        return 'zh_cn';
+    }
+    return 'jp';
+}
+
+function app_refresh_language(combo_name) {
+    app_set_conf('language', document.getElementById(combo_name).value);
+    //Refresh the current page.
+    app_set_conf(splash_disable_key, true);
+    window.location.reload();
+
+}
+
+function app_language_combo(combo_name, language_key) {
+    // Update the options.
+    const language_keys = Object.keys(i18n_map);
+    let language_items = [];
+    for(let i=0; i<language_keys.length; ++i) {
+        // Render the item.
+        language_items.push('<option value="'+language_keys[i]+'">'+i18n_map[language_keys[i]].translate_name+'</option>')
+    }
+    let nav_lan = document.getElementById(combo_name);
+    nav_lan.innerHTML = language_items.join('\n');
+    nav_lan.value = language_key;
+}
+
+function apply_language(language_key) {
+    // Set the i18n.
+    app_i18n = i18n_map[language_key];
+    // Update the options.
+    app_language_combo('nav-language', language_key);
+}
+
+/* JS cache data fetcher */
+let app_fetch_cache = {};
+let app_fetch_cache_enabled = false;
+function app_fetch(url, finished, user) {
+    if(url in app_fetch_cache) {
+        // Call the finished function.
+        finished(app_fetch_cache[url]);
+        return;
+    }
+    //Load the single page to content.
+    fetch(url, {
+        method: 'GET',
+        cache: 'no-cache'
+    }).then(function (res) {
+        res.text().then(function (response) {
+            if(app_fetch_cache_enabled) {
+                app_fetch_cache[url] = response;
+            }
+            if(user) {
+                finished(response, user);
+            } else {
+                finished(response);
+            }
+
+        });
+    });
+}
+
+/* Reload */
+function app_reload() {
+    window.location.reload();
+}
+
+//System UI render.
+const navbar_ids = ['stream', 'calender', 'single', 'songs', 'misc'];
+function render_header() {
+    //Set brand name
+    let nav_brand = document.getElementById('nav-brand');
+    nav_brand.innerHTML = app_i18n.brand;
+    nav_brand.onclick = app_reload;
+    // Render the header items.
+    const navbar_names = app_i18n.navbar;
+    for(let i=0; i<navbar_names.length; ++i) {
+        // Update the button label.
+        let nav_item = document.getElementById('nav-' + navbar_ids[i]);
+        nav_item.innerHTML = navbar_names[i];
+    }
+}
+
+function header_set_item(item_id) {
+    // Clear all the items.
+    for(let i=0; i<navbar_ids.length; ++i) {
+        document.getElementById('item-'+navbar_ids[i]).classList.remove('active');
+    }
+    // Set the current item.
+    document.getElementById('item-'+item_id).classList.add('active');
+}
+
+function render_footer() {
+    const footer_title_ids = ['f-stores', 'f-channels', 'f-lives-info'];
+    for(let i=0; i<footer_title_ids.length; ++i) {
+        document.getElementById(footer_title_ids[i]).innerHTML = app_i18n.footer_title[i];
+    }
+    const footer_link_ids = ['f-booth', 'f-twitter', 'f-youtube', 'f-bilibili', 'f-fanbox', 'f-twitcasting', 'f-bilibili-schedule', 'f-bilibili-live'];
+    for(let i=0; i<footer_link_ids.length; ++i) {
+        document.getElementById(footer_link_ids[i]).innerHTML = app_i18n.footer_links[i];
+    }
+    document.getElementById('f-license').innerHTML = app_i18n.footer_license;
+}
+
+function render_contact_links(prefix) {
+    const button_names = app_i18n.contacts,
+        button_ids = [prefix+'harerun-twitter', prefix+'harerun-youtube', prefix+'harerun-bilibili', prefix+'harerun-fanbox'],
+        button_urls = [
+            'https://twitter.com/hanamaruhareru',
+            'https://www.youtube.com/channel/UCyIcOCH-VWaRKH9IkR8hz7Q',
+            'https://space.bilibili.com/441381282',
+            'https://hanamaruhareru.fanbox.cc/'
+        ];
+    for(let i=0; i<button_ids.length; ++i) {
+        // Update the button label.
+        document.getElementById(button_ids[i]).innerHTML = button_names[i];
+        // Update the onclick label.
+        document.getElementById(button_ids[i]).onclick = function () { app_open_url(button_urls[i]); }
+    }
+}
+
+//Application panel loader.
+function app_load_panel(panel_url, callback) {
+    //Fetch the panel URL.
+    app_fetch(panel_url, function(page_data) {
+        document.getElementById('app-panel').innerHTML = page_data;
+        //Call the post-render callback.
+        if(callback !== null) {
+            callback();
+        }
+        //Once the panel load is complete, need to hide the splash screen.
+        splash_hide();
+    });
+}
+
+function app_init() {
+    //Write the console banner.
+    console.log('%c                       .::-\n' +
+        '                     ::.  .-\n' +
+        '                   .-      ::\n' +
+        '                  ::        =\n' +
+        '                 .-         :.    ___  ___  ________  ________  _______   ________  ___  ___  ________\n' +
+        '                 -           :   |\\  \\|\\  \\|\\   __  \\|\\   __  \\|\\  ___ \\ |\\   __  \\|\\  \\|\\  \\|\\   ___  \\\n' +
+        '                 :    .     :.   \\ \\  \\\\\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \\   __/|\\ \\  \\|\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\\n' +
+        '                  -  -     .:     \\ \\   __  \\ \\   __  \\ \\   _  _\\ \\  \\_|/_\\ \\   _  _\\ \\  \\\\\\  \\ \\  \\\\ \\  \\\n' +
+        '         ..::..  .-::.   ::        \\ \\  \\ \\  \\ \\  \\ \\  \\ \\  \\\\  \\\\ \\  \\_|\\ \\ \\  \\\\  \\\\ \\  \\\\\\  \\ \\  \\\\ \\  \\\n' +
+        '     .::.      .:-  .:::.           \\ \\__\\ \\__\\ \\__\\ \\__\\ \\__\\\\ _\\\\ \\_______\\ \\__\\\\ _\\\\ \\_______\\ \\__\\\\ \\__\\\n' +
+        '   ::         :::..-:                \\|__|\\|__|\\|__|\\|__|\\|__|\\|__|\\|_______|\\|__|\\|__|\\|_______|\\|__| \\|__|\n' +
+        ' .-          ..   ::\n' +
+        '.-               -.                                        Release '+release_version.join('.')+'. Powered by hnmr-core '+core_version.join('.')+'.\n' +
+        ' ::::.         ::                                          はれちゃんがずっと幸せでいられますように。\n' +
+        '      .:.:...::\n', 'color: #db9854');
+    //Start the loading chain.
+    database_load();
+}

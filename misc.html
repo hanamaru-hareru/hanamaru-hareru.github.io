@@ -1,0 +1,72 @@
+<div class="container">
+    <nav>
+        <ul id="misc-nav" class="nav nav-pills">
+            <li id="misc-greeting"><a id="misc-greeting-label" href="#misc&greeting"></a></li>
+            <li id="misc-button"><a id="misc-button-label" href="#misc&button"></a></li>
+            <li id="misc-omikuji" hidden><a id="misc-omikuji-label" href="#misc&omikuji"></a></li>
+            <li id="misc-about"><a id="misc-about-label" href="#misc&about"></a></li>
+            <select class="language-select" id="misc-nav-language" onchange="app_refresh_language('misc-nav-language')">
+            </select>
+        </ul>
+    </nav>
+    <div id="misc-panel-greeting" class="misc-frame" hidden>
+        <h3 id="misc-youtube-greeting"></h3>
+        <ul>
+            <li>今日も来てくたさてありがとうございます！</li>
+            <li>「こんばんは」の方、こんばんは！</li>
+            <li>「おはようございます」の方、おはようございます！</li>
+            <li>「こんにちは」の方、こんにちは！</li>
+            <li>「お久しぶり」の方、お久しぶりです！</li>
+            <li>「初めまして」の方、初めまして！</li>
+            <li>今日も元気に花丸印！花丸はれるです！よろしくお願いします！</li>
+        </ul>
+        <h3 id="misc-youtube-ending"></h3>
+        <ul>
+            <li>今日も遊びにい来てくださいましてありがとうございました！</li>
+            <li>コメント、アーカイブのお客さんの感謝</li>
+            <li>チャンネル登録</li>
+            <li>グッドマークボタン</li>
+            <li>「#あっぱれはれるん」タグ</li>
+            <li>他のお知らせ（予告と宣伝）</li>
+            <li>スーパーチャット感謝</li>
+        </ul>
+        <h3 id="misc-bilibili-greeting"></h3>
+        <p><ruby>早<rt>zǎo</rt></ruby>！<ruby>晚<rt>wǎn</rt>上<rt>shàng</rt>好<rt>hǎo</rt></ruby>！<ruby>大<rt>dà</rt>家<rt>jiā</rt>好<rt>hǎo</rt></ruby>！<ruby>我<rt>wǒ</rt>是<rt>shì</rt>花<rt>huā</rt>丸<rt>wán</rt></ruby>！今日も元気に花丸印！花丸はれるです！よろしくお願いします！</p>
+        <h3 id="misc-bilibili-ending"></h3>
+        <ul>
+            <li>今日も遊びにい来てくださいましてありがとうございました！</li>
+            <li>コメント、アーカイブのお客さんの感謝</li>
+            <li><ruby>求<rt>qiú</rt>关<rt>guán</rt>注<rt>zhù</rt></ruby></li>
+            <li>スーパーチャット、ギフト感謝</li>
+            <li>船長（せんちょう）、提督（ていとく）、総督（そうとく）の感謝</li>
+            <li>花丸家バチのみんあの感謝</li>
+            <li>同時翻訳MANの感謝</li>
+            <li>次回の配信と歌投稿予告</li>
+        </ul>
+    </div>
+    <div id="misc-panel-button" class="misc-frame" hidden>
+        <audio id="misc-button-audio" ref="misc-button-audio" onended="voice_on_end()" oncanplaythrough="voice_on_canplay()"></audio>
+        <div id="misc-button-view"></div>
+    </div>
+    <div id="misc-panel-omikuji" class="misc-frame" hidden>
+        <div id="omikuji-container">
+            <h2 id="omikuji-title"></h2>
+            <img id="omikuji-image" src="">
+
+            <button id="omikuji-once-more" type="button" class="btn btn-light" onclick="misc_omikuji_once_more();"></button>
+            <p id="omikuji-hint"></p>
+            <p id="omikuji-source"><span id="omikuji-source-label-0"></span><a id="omikuji-source-label-1" href="https://twitter.com/niziato_2525/status/1477618594980962307"></a>, <a id="omikuji-source-label-2" href="https://t.bilibili.com/615367486650801258"></a></p>
+        </div>
+    </div>
+    <div id="misc-panel-about" class="misc-frame" hidden>
+        <h3 id="misc-about-title"></h3>
+        <p id="misc-about-version"></p>
+        <p id="misc-message-maintain"></p>
+        <p id="misc-message-warning"></p>
+        <p id="misc-message-copyright"></p>
+        <p><span id="misc-about-1"></span><a href="https://twitter.com/sakitojo">Saki Tojo</a></p>
+        <p><span id="misc-about-2"></span><a href="https://twitter.com/sakitojo">Saki Tojo</a>, <a href="https://twitter.com/ninimibi1">がしる</a></p>
+        <p><span id="misc-about-3"></span><a href="https://twitter.com/hanamaruhareru">花丸はれる Official</a>, <a href="https://twitter.com/niziato_2525">にじあと</a></p>
+    </div>
+</div>
+<div class="large-container-spacing"></div>
