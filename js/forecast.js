@@ -75,16 +75,31 @@ function forecast_render() {
                 stream_time += ' ' + app_i18n.jst(forcast_time_to_str(jst_time));
             }
             //Construct the JST time text.
-            let sicon = 'icon-youtube';
-            if(display_list[i].platform === 'b') {
-                sicon = 'icon-bilibili';
-            } else if (display_list[i].platform === 'f') {
-                sicon = 'icon-fanbox';
+            let icon_html = '', y_url = '', b_url = '';
+            for (let j = 0; j < display_list[i].platform.length; j++) {
+                const platform_c = display_list[i].platform.charAt(j);
+                let sicon = '';
+                if(platform_c === 'y') {
+                    sicon = 'icon-youtube'
+                    //Youtube live, the URL can use this if it is not provided.
+                    y_url = "https://www.youtube.com/channel/UCyIcOCH-VWaRKH9IkR8hz7Q/live";
+                } else if(platform_c === 'b') {
+                    sicon = 'icon-bilibili';
+                    //Bilibili live, the URL is fixed.
+                    b_url = "https://live.bilibili.com/21547895";
+                } else if (platform_c === 'f') {
+                    sicon = 'icon-fanbox';
+                }
+                if(sicon.length > 0) {
+                    icon_html += '<div class="text-icon ' + sicon + '"></div>';
+                }
+            }
+            if(display_list[i].url.length === 0) {
+                display_list[i].url = app_archive_url(y_url, b_url, app_i18n.force_bilibili ? 'b' : 'y');
             }
             let stream_info = ['<div class="time-row">',
                 app_hyperlink(display_list[i].url),
-                '<div class="text-icon ' + sicon + '">',
-                '</div>',
+                icon_html,
                 stream_time,
                 '</a>',
                 '</div>'];
@@ -132,15 +147,10 @@ function forecast_load_data(forecast_data) {
         }
         //The time is JST.
         if(forecast_data[i].url.length === 0) {
-            if(forecast_data[i].platform === "b") {
-                //Bilibili live, the URL is fixed.
-                forecast_data[i].url = "https://live.bilibili.com/21547895";
-            } else if(forecast_data[i].platform === "f") {
+            //Check the platform.
+            if(forecast_data[i].platform === "f") {
                 //FANBOX live, the URL uses FANBOX page instead.
                 forecast_data[i].url = "https://www.fanbox.cc/@hanamaruhareru";
-            } else if(forecast_data[i].platform === "y") {
-                //Youtube live, the URL can use this if it is not provided.
-                forecast_data[i].url = "https://www.youtube.com/channel/UCyIcOCH-VWaRKH9IkR8hz7Q/live";
             }
         }
         valid_forecast.push(forecast_data[i]);
