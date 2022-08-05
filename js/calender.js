@@ -117,9 +117,19 @@ function calender_render(year, month) {
         while(live_on_month.length > 0 && live_on_month[live_on_month.length-1][4].getDate() === i+1) {
             let live_info = live_on_month[live_on_month.length-1];
             live_on_month.pop();
+            //Check the icon.
+            let video_icon = [];
+            const video_source = live_info[0];
+            for(let j=0; j<video_source.length; ++j) {
+                if(video_source[j] === 'b') {
+                    video_icon.push('<div class="text-icon icon-bilibili"></div>');
+                } else {
+                    video_icon.push('<div class="text-icon icon-youtube"></div>');
+                }
+            }
             //Add the records.
             let live_html = app_hyperlink(app_archive_url(live_info[2], live_info[3]))+
-                '<div class="text-icon '+(live_info[0] === 'b' ? 'icon-bilibili' : 'icon-youtube')+'"></div>'+ live_info[1] + '</a>';
+                video_icon.join('') + live_info[1] + '</a>';
             //Check whether it is live day.
             if(live_info[5]) {
                 const date = live_info[4];

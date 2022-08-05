@@ -161,9 +161,19 @@ function stream_search(keywords) {
             const date = video_info[4];
             song_list_url = '<a class="half-opacity-text float-to-right" href="#setori&year='+date.getFullYear()+'&month='+(date.getMonth()+1)+'&day='+date.getDate()+'">'+app_i18n.view_setori+'</a>';
         }
+        // Check the table icon.
+        let video_icon = [];
+        const video_source = video_info[0];
+        for(let j=0; j<video_source.length; ++j) {
+            if(video_source[j] === 'b') {
+                video_icon.push('<div class="text-icon icon-bilibili"></div>');
+            } else {
+                video_icon.push('<div class="text-icon icon-youtube"></div>');
+            }
+        }
         // Construct the title part.
         const row_src = ["<tr>",
-            '<td class="table-icon"><div class="text-icon '+(video_info[0] === 'b' ? 'icon-bilibili' : 'icon-youtube')+'"></div></td>',
+            '<td class="table-icon">'+video_icon.join('')+'</td>',
             '<td class="table-stretch">' + app_hyperlink(app_archive_url(video_info[2], video_info[3])) + video_info[1] + '</a>' + song_list_url + '</td>',
             "<td>"+ video_info[4].toLocaleDateString(locale) + "</td>",
             "</tr>"]
