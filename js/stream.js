@@ -37,6 +37,23 @@ function slide_show(n) {
     dots[slideIndex-1].className += " slide-active";
 }
 
+const image_fetch_flag = new Date().getTime().toString();
+
+function slides_image_url(item_info) {
+    let slide_title = item_info.title;
+    if(slide_title.startsWith('$#')) {
+        return '/asserts/slides/' + slide_title.substring(2) + '.png?dev=' + image_fetch_flag;
+    }
+    return item_info.img;
+}
+
+function slides_cache_image() {
+    // Just fetch all the image once.
+    for(let i=0; i<slides.records.length; ++i) {
+        app_fetch(slides_image_url(slides.records[i]), function (res) {});
+    }
+}
+
 function slides_render() {
     function create_slide(title, image_url, url, y_url, b_url) {
         let target_url = url;
@@ -54,14 +71,12 @@ function slides_render() {
 
     //Render the slide into HTML.
     let indicator = [], item_data = [];
-    const timestamp = new Date().getTime().toString();
     for(let i=0; i<slides.records.length; ++i) {
         const item_info = slides.records[i];
-        let slide_title = item_info.title, image_url = '/', s_url = '', s_y_url = '', s_b_url = '';
+        let slide_title = item_info.title, image_url = slides_image_url(item_info),
+            s_url = '', s_y_url = '', s_b_url = '';
         if(slide_title.startsWith('$#')) {
             slide_title = slide_title.substring(2);
-            //Update the image url.
-            image_url = '/asserts/slides/' + slide_title + '.png?dev=' + timestamp;
             //Check the title is valid or not.
             if(slide_title === 'last_live' || slide_title === 'last_song_live') {
                 //Find the last live but not song stream.
@@ -81,7 +96,6 @@ function slides_render() {
                 }
             }
         } else {
-            image_url = item_info.img;
             s_url = item_info.url;
             s_y_url = item_info['youtube-url'];
             s_b_url = item_info['bilibili-url'];
@@ -144,6 +158,8 @@ function load_streams() {
     header_set_item('stream');
     // Render the stream information list.
     app_load_panel('stream.html', function() {
+        // Cache the slides images.
+        slides_cache_image();
         // Render the mobile buttons.
         render_contact_links('mobile-');
         // Render the slides.

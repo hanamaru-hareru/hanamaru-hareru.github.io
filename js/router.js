@@ -85,6 +85,7 @@ function app_ui_cache() {
             ui_cache_counter += 1;
             if(ui_cache_counter === ui_pages.length) {
                 //Load the core UI.
+                app_fetch_cache_enabled = false;
                 app_ui_init();
             }
         }, ui_page_name);

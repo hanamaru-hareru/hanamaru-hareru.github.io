@@ -73,7 +73,5 @@ function load_single() {
         }
         // Render the default records.
         single_render_items(single.records);
-        // Hide the splash screen.
-        splash_hide();
     });
 }

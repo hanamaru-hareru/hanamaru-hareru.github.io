@@ -518,7 +518,7 @@ function sl_load_song_statistic(panel_navid, target_fetch) {
     song_list_load_panel('song-view.html', app_i18n.title_song_list, panel_navid, function() {
         //Configure the target records.
         song_list.target_records = target_fetch();
-        // Set the place holder.
+        // Set the placeholder.
         document.getElementById('sl-search-song').setAttribute('placeholder', app_i18n.search_song);
         // Render the table header.
         const table_header = app_i18n.song_record_table_title;
@@ -540,9 +540,6 @@ function sl_load_song_statistic(panel_navid, target_fetch) {
         }
         // Render the table.
         sl_set_song_table(song_list.target_records, 'sl-search-counter', 'sl-search-results');
-        // Hide the splash screen.
-        splash_hide();
-
     });
 }
 
@@ -619,8 +616,6 @@ function sl_load_song_info() {
     song_list_load_panel('song-detail.html', app_i18n.title_song_info(song_name), selected_nav, function() {
             // Show the UI.
             sl_song_info_init_ui(song_name, mode);
-            // Hide the splash screen.
-            splash_hide();
     });
 }
 
@@ -659,12 +654,7 @@ function sl_setori_init_ui() {
 }
 
 function sl_load_setori() {
-    song_list_load_panel('setori.html', app_i18n.title_song_list, 'sl-live-list', function() {
-        // Init the UI.
-        sl_setori_init_ui();
-        // Hide the splash screen.
-        splash_hide();
-    });
+    song_list_load_panel('setori.html', app_i18n.title_song_list, 'sl-live-list', sl_setori_init_ui);
 }
 
 function render_limited_statistic(limited_songs) {
@@ -738,10 +728,5 @@ function sl_statistic_init_ui() {
 }
 
 function sl_load_statistic() {
-    song_list_load_panel('song-statistic.html', app_i18n.title_song_list, 'sl-song-statistic', function() {
-        //Load the ui.
-        sl_statistic_init_ui();
-        // Hide the splash screen.
-        splash_hide();
-    })
+    song_list_load_panel('song-statistic.html', app_i18n.title_song_list, 'sl-song-statistic', sl_statistic_init_ui);
 }

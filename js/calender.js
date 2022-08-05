@@ -241,10 +241,5 @@ function load_calender() {
     document.title = app_i18n.title_stream;
     // Clear and reset the header.
     header_set_item('calender');
-    app_load_panel('calender.html', function() {
-        // Init the calender UI.
-        calender_init_ui();
-        // Hide the splash screen.
-        splash_hide();
-    });
+    app_load_panel('calender.html', calender_init_ui);
 }

@@ -123,10 +123,5 @@ function misc_init_ui() {
 function load_misc() {
     document.title = app_i18n.title_misc;
     header_set_item('misc');
-    app_load_panel('misc.html', function() {
-        //Initial the UI.
-        misc_init_ui();
-        // Hide the splash screen.
-        splash_hide();
-    });
+    app_load_panel('misc.html', misc_init_ui);
 }
