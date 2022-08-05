@@ -49,6 +49,9 @@ function slides_image_url(item_info) {
 
 let slide_image_blob = [];
 function slides_cache_image() {
+    if(slide_image_blob.length > 0) {
+        load_streams_ui();
+    }
     // Just fetch all the image once.
     for(let i=0; i<slides.records.length; ++i) {
         const slide_raw_url = slides_image_url(slides.records[i]);
