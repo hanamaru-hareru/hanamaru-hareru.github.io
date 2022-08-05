@@ -153,9 +153,26 @@ function app_fetch(url, finished, user) {
             } else {
                 finished(response);
             }
-
         });
     });
+}
+
+function app_fetch_image(url, finished, user) {
+    //Load the image to content.
+    fetch(url, {
+        method: 'GET',
+        cahce: 'no-cache'
+    })
+        .then(response => response.blob())
+        .then(imageBlob => {
+            const imageObjectUrl = URL.createObjectURL(imageBlob);
+            if(user) {
+                finished(imageObjectUrl, user);
+            } else {
+                finished(imageObjectUrl);
+            }
+        });
+
 }
 
 /* Reload */

@@ -37,21 +37,37 @@ function slide_show(n) {
     dots[slideIndex-1].className += " slide-active";
 }
 
-const image_fetch_flag = new Date().getTime().toString();
+const slide_image_flag = new Date().getTime().toString();
 
 function slides_image_url(item_info) {
     let slide_title = item_info.title;
     if(slide_title.startsWith('$#')) {
-        return '/asserts/slides/' + slide_title.substring(2) + '.png?dev=' + image_fetch_flag;
+        return '/asserts/slides/' + slide_title.substring(2) + '.png?dev=' + slide_image_flag;
     }
     return item_info.img;
 }
 
+let slide_image_blob = [];
 function slides_cache_image() {
     // Just fetch all the image once.
     for(let i=0; i<slides.records.length; ++i) {
-        app_fetch(slides_image_url(slides.records[i]), function (res) {});
+        const slide_raw_url = slides_image_url(slides.records[i]);
+        app_fetch_image(slide_raw_url, function (image_blob_url) {
+            slide_image_blob.push([slide_raw_url, image_blob_url]);
+            if(slide_image_blob.length === slides.records.length) {
+                load_streams_ui();
+            }
+        });
     }
+}
+
+function slide_blob_url(raw_url) {
+    for(let i=0; i<slide_image_blob.length; ++i) {
+        if(slide_image_blob[i][0] === raw_url) {
+            return slide_image_blob[i][1];
+        }
+    }
+    return '';
 }
 
 function slides_render() {
@@ -73,7 +89,7 @@ function slides_render() {
     let indicator = [], item_data = [];
     for(let i=0; i<slides.records.length; ++i) {
         const item_info = slides.records[i];
-        let slide_title = item_info.title, image_url = slides_image_url(item_info),
+        let slide_title = item_info.title, image_url = slide_blob_url(slides_image_url(item_info)),
             s_url = '', s_y_url = '', s_b_url = '';
         if(slide_title.startsWith('$#')) {
             slide_title = slide_title.substring(2);
@@ -153,13 +169,9 @@ function stream_search(keywords) {
     document.getElementById('stream-results').innerHTML = record_rows.join('\n');
 }
 
-function load_streams() {
-    document.title = app_i18n.title_stream;
-    header_set_item('stream');
+function load_streams_ui() {
     // Render the stream information list.
     app_load_panel('stream.html', function() {
-        // Cache the slides images.
-        slides_cache_image();
         // Render the mobile buttons.
         render_contact_links('mobile-');
         // Render the slides.
@@ -175,6 +187,13 @@ function load_streams() {
         //Perform an empty search.
         stream_search('');
     });
+}
+
+function load_streams() {
+    document.title = app_i18n.title_stream;
+    header_set_item('stream');
+    // Cache the slides images.
+    slides_cache_image();
 }
 
 function stream_load_data(video_data) {
