@@ -52,7 +52,7 @@ function misc_omikuji_once_more() {
 
 function misc_init_ui() {
     // Render the headers.
-    const nav_ids = ['misc-greeting', 'misc-button', 'misc-omikuji', 'misc-about'];
+    const nav_ids = ['misc-greeting', 'misc-button', 'misc-intro', 'misc-omikuji', 'misc-about'];
     for(let i=0; i<nav_ids.length; ++i) {
         document.getElementById(nav_ids[i]+'-label').innerHTML = app_i18n.navbar_misc[i];
     }
@@ -97,6 +97,34 @@ function misc_init_ui() {
         }
         //Decide the omikuji.
         misc_omikuji_decide();
+        return;
+    }
+    if('intro' in app_url.args) {
+        document.getElementById('misc-intro').classList.add('active');
+        document.getElementById('misc-panel-intro').removeAttribute('hidden');
+        //Set the label.
+        const label_ids = ['intro-raw', 'intro-1st', 'intro-2020', 'intro-2nd', 'intro-2021'];
+        for(let i=0; i<label_ids.length; ++i) {
+            document.getElementById('misc-button-'+label_ids[i]).innerHTML = app_i18n.navbar_intro[i];
+        }
+        //Check position.
+        if('2021' in app_url.args) {
+            document.getElementById('misc-intro-2021').classList.add('active');
+            document.getElementById('misc-lyrics-intro-2021').removeAttribute('hidden');
+        } else if('2nd' in app_url.args) {
+            document.getElementById('misc-intro-2nd').classList.add('active');
+            document.getElementById('misc-lyrics-intro-2nd').removeAttribute('hidden');
+        } else if('2020' in app_url.args) {
+            document.getElementById('misc-intro-2020').classList.add('active');
+            document.getElementById('misc-lyrics-intro-2020').removeAttribute('hidden');
+        } else if('1st' in app_url.args) {
+            document.getElementById('misc-intro-1st').classList.add('active');
+            document.getElementById('misc-lyrics-intro-1st').removeAttribute('hidden');
+        } else {
+            // Default.
+            document.getElementById('misc-intro-raw').classList.add('active');
+            document.getElementById('misc-lyrics-intro-raw').removeAttribute('hidden');
+        }
         return;
     }
     if('about' in app_url.args) {
