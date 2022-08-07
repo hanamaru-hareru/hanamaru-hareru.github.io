@@ -8,7 +8,7 @@ const en_translate = {
     navbar_song_list: ['Song List', 'Single Songs', 'Medley Songs', 'All Songs', 'Statistic'],
     navbar_statistic: ['Stream Limited', 'Medley Limited'],
     navbar_misc: ['Stream Greetings', 'Harerun Button', 'Self-intro Song Lyrics', 'Omikuji', 'Site Info'],
-    navbar_intro: ['Original', '1st Anni.', 'End of 2020', '2nd Anni.', 'End of 2021'],
+    navbar_intro: ['Original', '1st Anni.', 'End of 2020', '2nd Anni.', 'End of 2021', '3rd Anni.'],
     song_record_table_title: ['Song Name', 'Last sung', 'Times', 'Times @ Youtube', 'Times @ Bilibili'],
     footer_title: ['Official Stores', 'Channels', 'Live Rooms'],
     footer_links: ['Booth', 'Twitter', 'Youtube', 'Bilibili', 'Pixiv FANBOX', 'TwitCasting', 'BiliBili Schedule', 'BiliBili Stream Room'],

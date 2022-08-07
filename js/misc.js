@@ -103,12 +103,15 @@ function misc_init_ui() {
         document.getElementById('misc-intro').classList.add('active');
         document.getElementById('misc-panel-intro').removeAttribute('hidden');
         //Set the label.
-        const label_ids = ['intro-raw', 'intro-1st', 'intro-2020', 'intro-2nd', 'intro-2021'];
+        const label_ids = ['intro-raw', 'intro-1st', 'intro-2020', 'intro-2nd', 'intro-2021', 'intro-3rd'];
         for(let i=0; i<label_ids.length; ++i) {
             document.getElementById('misc-button-'+label_ids[i]).innerHTML = app_i18n.navbar_intro[i];
         }
         //Check position.
-        if('2021' in app_url.args) {
+        if('3rd' in app_url.args) {
+            document.getElementById('misc-intro-3rd').classList.add('active');
+            document.getElementById('misc-lyrics-intro-3rd').removeAttribute('hidden');
+        } else if('2021' in app_url.args) {
             document.getElementById('misc-intro-2021').classList.add('active');
             document.getElementById('misc-lyrics-intro-2021').removeAttribute('hidden');
         } else if('2nd' in app_url.args) {
