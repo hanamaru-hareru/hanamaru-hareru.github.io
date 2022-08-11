@@ -195,7 +195,7 @@ function render_header() {
         nav_item.innerHTML = navbar_names[i];
     }
     //Detect whether the website is running on iOS.
-    if(is_on_ios()) {
+    if(is_on_ios() && window.navigator.standalone) {
         document.getElementById('app-header').classList.add('ios-padding');
     }
 }

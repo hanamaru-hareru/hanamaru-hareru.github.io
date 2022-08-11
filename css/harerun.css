@@ -99,6 +99,7 @@ body {
     font-weight: var(--body-font-weight);
     line-height: var(--body-line-height);
     background-color: rgba(var(--main-color));
+    color: rgb(var(--text-color));
     text-align: center;
     text-shadow: 0 1px 3px rgb(0 0 0 / 50%);
 }
@@ -946,13 +947,22 @@ table>:not(:first-child) {
         font-size: 14px;
         font-weight: bold;
         text-shadow: 0 1px 3px rgb(0 0 0 / 50%);
-        padding: .5em .5em .5em .5em;
+        /*padding: 0em .2em .5em .5em;*/
         border: 0;
         margin: 0;
         border-radius: 3px;
         text-indent: 0.01px;
         text-overflow: '';
         -webkit-appearance: button;
+    }
+
+    #nav-language::after {
+        display: block;
+        content: "​";
+        width: 1em;
+        margin: 0 auto 0;
+        height: 0.3em;
+        background-color: rgb(var(--main-color));
     }
 
     .calender-select * {
