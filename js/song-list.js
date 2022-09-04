@@ -735,6 +735,8 @@ function render_limited_table(max_count) {
             song_list.limited_table.push(song_item);
         }
     }
+    //Sort as last singing date.
+    song_list.limited_table.sort(sl_song_sort_function[1]);
     sl_render_song_table(song_list.limited_table, 'sl-c-count', 'sl-c-search-results');
 }
 
