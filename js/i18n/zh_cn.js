@@ -6,7 +6,7 @@ const zh_cn_translate = {
     contacts: ['推特', '油管', 'B站', 'FANBOX'],
     navbar: ['直播', '日历', '单曲', '歌单', '杂物'],
     navbar_song_list: ['歌单', '单曲一览', '串烧一览', '全部曲目', '统计'],
-    navbar_statistic: ['直播限定单曲', '串烧限定曲'],
+    navbar_statistic: ['直播限定单曲', '串烧限定曲', '次数限定曲'],
     navbar_misc: ['直播问候', '花丸按钮', '自我介绍歌歌词', '御神签', '网站信息'],
     navbar_intro: ['原版', '1周年', '2020年末', '2周年', '2021年末', '3周年'],
     song_record_table_title: ['曲名', '最近一次演唱', '演唱次数', '油管演唱次数', 'B站演唱次数'],
@@ -40,6 +40,7 @@ const zh_cn_translate = {
     title_misc: '花丸标记今天很好！（?)',
     title_greetings: ['油管直播问候', '油管直播结束问候', 'B站直播问候', 'B站直播结束问候'],
     title_about: ['信息收集'],
+    title_time_select: '演唱次数：',
 
     view_setori: '查看当日歌单',
     sort_ascend: '↑升序',

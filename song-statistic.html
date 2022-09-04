@@ -2,6 +2,7 @@
     <ul class="nav nav-pills">
         <li id="sl-s-songs"><a id="sl-s-songs-label" href="#song-statistic"></a></li>
         <li id="sl-s-medley-only"><a id="sl-s-medley-only-label" href="#song-statistic&medley-only"></a></li>
+        <li id="sl-s-count-limit"><a id="sl-s-count-limit-label" href="#song-statistic&counter"></a></li>
     </ul>
 </nav>
 <div id="sl-s-limited" class="container" hidden>
@@ -49,7 +50,7 @@
 </div>
 <div id="sl-m-limited" hidden>
     <h3 id="sl-m-limited-title"></h3>
-    <div id="sl-m-count"></div>
+    <div class="search-counter statistic-counter" id="sl-m-count"></div>
     <div class="table-responsive">
         <table class="table table-striped table-borderless">
             <thead>
@@ -62,6 +63,40 @@
             </tr>
             </thead>
             <tbody id="sl-medley-songs"></tbody>
+        </table>
+    </div>
+</div>
+<div id="sl-c-counter" hidden>
+    <div class="top-tap-margin">
+        <span id="sl-c-time-label"></span>
+        <span class="calender-dropdown">
+            <select class="calender-select" id="sl-c-max-count" onchange="on_max_limit_change()">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+        </span>
+    </div>
+    <div class="search-counter statistic-counter" id="sl-c-count"></div>
+    <div class="table-responsive">
+        <table>
+            <thead>
+            <tr>
+                <th id="sl-c-song-header-0"><span id="sl-c-song-name"></span><span class="float-to-right" id="sort-mark-0"></span></th>
+                <th id="sl-c-song-header-1"><span id="sl-c-song-last"></span><span class="float-to-right" id="sort-mark-1"></span></th>
+                <th id="sl-c-song-header-2"><span id="sl-c-song-times"></span><span class="float-to-right" id="sort-mark-2"></span></th>
+                <th id="sl-c-song-header-3"><span id="sl-c-song-at-youtube"></span><span class="float-to-right" id="sort-mark-3"></span></th>
+                <th id="sl-c-song-header-4"><span id="sl-c-song-at-bilibili"></span><span class="float-to-right" id="sort-mark-4"></span></th>
+            </tr>
+            </thead>
+            <tbody id="sl-c-search-results">
+            </tbody>
         </table>
     </div>
 </div>

@@ -435,6 +435,14 @@ header .nav-item.active a {
     color: rgb(var(--hint-color));
 }
 
+.statistic-counter {
+    margin-left: 0;
+}
+
+.top-tap-margin {
+    margin-top: 5px;
+}
+
 /* day counter */
 #day-counter {
     margin-bottom: 20px;

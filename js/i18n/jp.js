@@ -6,7 +6,7 @@ const jp_translate = {
     contacts: ['Twitter', 'Youtube', 'Bilibili', 'FANBOX'],
     navbar: ['配信', 'カレンダ', 'シングル', 'セトリ', '雑物'],
     navbar_song_list: ['セトリ', '曲', 'メドレ曲', '全ての曲', '統計'],
-    navbar_statistic: ['配信限定曲', 'メドレ限定曲'],
+    navbar_statistic: ['配信限定曲', 'メドレ限定曲', '回数限定曲'],
     navbar_misc: ['配信あいさつ', 'はれるんボタン', '自己紹介の歌歌詞', 'おみくじ', 'サイト情報'],
     navbar_intro: ['オリジナル', '一周年', '2020年末', '二周年', '2021年末', '三周年'],
     song_record_table_title: ['曲名', '最後に歌った日', '全回数', 'Youtubeでの回数', 'Bilibiliでの回数'],
@@ -39,6 +39,7 @@ const jp_translate = {
     title_forecast: '花丸スケジュール',
     title_misc: '今日も元気に花丸印！',
     title_greetings: ['Youtube配信あいさつ', 'Youtube配信終了あいさつ', 'BiliBili配信あいさつ', 'BiliBili配信終了あいさつ'],
+    title_time_select: '歌う回数：',
 
     view_setori: 'セトリを見る',
     sort_ascend: '↑昇順',

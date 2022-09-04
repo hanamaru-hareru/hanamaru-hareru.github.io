@@ -717,16 +717,58 @@ function render_limited_medley() {
     sl_render_song_table(song_list.medley_limited, 'sl-m-count', 'sl-medley-songs');
 }
 
+function on_max_limit_change() {
+    //Get the maximum limit.
+    let song_max_limit = document.getElementById('sl-c-max-count').value;
+    //Render the table.
+    render_limited_table(parseInt(song_max_limit));
+}
+
+function render_limited_table(max_count) {
+    //Filter out the max count data.
+    song_list.limited_table = [];
+    //Render the table.
+    for(let i=0; i<song_list.song_statistic.length; ++i) {
+        //Find out the count data.
+        const song_item = song_list.song_statistic[i];
+        if(song_item[1].count === max_count) {
+            song_list.limited_table.push(song_item);
+        }
+    }
+    sl_render_song_table(song_list.limited_table, 'sl-c-count', 'sl-c-search-results');
+}
+
+function render_limited_count() {
+    //Show the panel.
+    document.getElementById('sl-c-counter').removeAttribute('hidden');
+    //Show the table.
+    document.getElementById('sl-c-time-label').innerHTML = app_i18n.title_time_select;
+    // Render the table header.
+    const table_header = app_i18n.song_record_table_title;
+    const count_header_ids = ['sl-c-song-name', 'sl-c-song-last', 'sl-c-song-times', 'sl-c-song-at-youtube', 'sl-c-song-at-bilibili'];
+    for(let i=0; i<count_header_ids.length; ++i) {
+        document.getElementById(count_header_ids[i]).innerHTML = table_header[i];
+    }
+    //Render the table.
+    render_limited_table(1);
+}
+
 function sl_statistic_init_ui() {
     // Render the navbar.
-    const navbar_statistic_ids = ['sl-s-songs-label', 'sl-s-medley-only-label'];
+    const navbar_statistic_ids = ['sl-s-songs-label', 'sl-s-medley-only-label', 'sl-s-count-limit-label'];
     for(let i=0; i<navbar_statistic_ids.length; ++i) {
         document.getElementById(navbar_statistic_ids[i]).innerHTML = app_i18n.navbar_statistic[i];
     }
     if('medley-only' in app_url.args) {
         document.getElementById('sl-s-medley-only').classList.add('active');
-        // Render
+        // Render medley limited songs.
         render_limited_medley();
+        return;
+    }
+    if('counter' in app_url.args) {
+        document.getElementById('sl-s-count-limit').classList.add('active');
+        // Render times limited songs.
+        render_limited_count();
         return;
     }
     document.getElementById('sl-s-songs').classList.add('active');
