@@ -459,7 +459,7 @@ header .nav-item.active a {
 /* forecast border */
 .alert {
     position: relative;
-    padding: 8px 1rem 1rem;
+    padding: 10px 1rem 10px 1rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: .25rem;
