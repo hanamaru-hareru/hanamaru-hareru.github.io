@@ -728,9 +728,9 @@ function render_limited_table(max_count) {
     //Filter out the max count data.
     song_list.limited_table = [];
     //Render the table.
-    for(let i=0; i<song_list.song_statistic.length; ++i) {
+    for(let i=0; i<song_list.merge_statistic.length; ++i) {
         //Find out the count data.
-        const song_item = song_list.song_statistic[i];
+        const song_item = song_list.merge_statistic[i];
         if(song_item[1].count === max_count) {
             song_list.limited_table.push(song_item);
         }
