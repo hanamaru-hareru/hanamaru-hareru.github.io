@@ -167,6 +167,8 @@ function stream_search(keywords) {
         for(let j=0; j<video_source.length; ++j) {
             if(video_source[j] === 'b') {
                 video_icon.push('<div class="text-icon icon-bilibili"></div>');
+            } else if(video_source[j] === 'f') {
+                video_icon.push('<div class="text-icon icon-fanbox"></div>');
             } else {
                 video_icon.push('<div class="text-icon icon-youtube"></div>');
             }
@@ -231,7 +233,11 @@ function stream_load_data(video_data) {
     };
     //Loop append the song live date.
     for(let i=0; i<video_data.length; ++i) {
-        video_data[i].push(song_date.has(video_data[i][4]));
+        let has_date = song_date.has(video_data[i][4]);
+        if(video_data[i][0] !== 'y' && video_data[i][0] !== 'b') {
+            has_date = false;
+        }
+        video_data[i].push(has_date);
     }
     stream.records = video_data;
 }

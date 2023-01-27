@@ -123,6 +123,8 @@ function calender_render(year, month) {
             for(let j=0; j<video_source.length; ++j) {
                 if(video_source[j] === 'b') {
                     video_icon.push('<div class="text-icon icon-bilibili"></div>');
+                } else if(video_source[j] === 'f') {
+                    video_icon.push('<div class="text-icon icon-fanbox"></div>');
                 } else {
                     video_icon.push('<div class="text-icon icon-youtube"></div>');
                 }
