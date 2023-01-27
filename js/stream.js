@@ -119,6 +119,9 @@ function slides_render() {
             s_y_url = item_info['youtube-url'];
             s_b_url = item_info['bilibili-url'];
         }
+        if(slide_title === 'FANBOX限定配信') {
+            image_url = '/asserts/slides/fanbox.png?dev=' + slide_image_flag;
+        }
         item_data.push(create_slide(slide_title, image_url, s_url, s_y_url, s_b_url));
         indicator.push('<span class="slide-dot" onclick="slide_current('+(i+1)+')"></span>');
     }
