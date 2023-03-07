@@ -1,4 +1,4 @@
-const release_version = [4, 0, 220222];
+const release_version = [4, 0, 230308];
 const core_version = [4, 0, 0];
 
 /* Basic functions */

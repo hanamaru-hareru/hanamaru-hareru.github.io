@@ -1,6 +1,6 @@
 const en_translate = {
     translate_name: 'English',
-    brand: 'Harerunpedia β',
+    brand: 'Hanamaru🍸Bar',
     day_of_the_week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     day_of_the_week_short: ['Sun.', 'Mon.', 'Tue.', 'Wed,', 'Thu.', 'Fri.', 'Sat.'],
     contacts: ['Twitter', 'Youtube', 'Bilibili', 'Fanbox'],
