@@ -358,13 +358,22 @@ header .nav-item.active a {
     margin-right: 5px;
     font-size: 14px;
 }
-.hnmr-btn:hover {
+.hnmr-btn.active, .hnmr-btn:hover {
     color: #000;
     background-color: #f9fafb;
     border-color: #f9fafb;
 }
 
 /* main panel */
+#hareru-birthday-banner {
+    color: rgb(var(--text-color));
+    background-color: rgba(var(--background-color));
+}
+
+#hareru-birthday-banner > * {
+    margin: 0;
+}
+
 #app-panel {
     color: rgb(var(--text-color));
     background-color: rgba(var(--background-color));
@@ -433,6 +442,23 @@ header .nav-item.active a {
     margin-bottom: 10px;
     margin-left: 55px;
     color: rgb(var(--hint-color));
+}
+
+.search-option {
+    margin-left: 20px;
+}
+
+.stream-option {
+    display: inline-block;
+}
+
+.stream-option > * {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#stream-search-option {
+    cursor: pointer;
 }
 
 .statistic-counter {
@@ -944,6 +970,10 @@ table>:not(:first-child) {
 
 /* PC version styles */
 @media screen and (min-width: 767px) {
+    #hareru-birthday-banner {
+        padding-top: 1.5em;
+    }
+
     #app-panel {
         padding-top: 14px;
         padding-bottom: 14px;
@@ -1136,6 +1166,11 @@ table>:not(:first-child) {
 
 /* Mobile version styles */
 @media screen and (max-width: 766px) {
+    #hareru-birthday-banner {
+        padding-top: 1em;
+        margin-bottom: 15px;
+    }
+
     #app-panel {
         margin-top: -15px;
         padding-top: 15px;

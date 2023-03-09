@@ -59,6 +59,8 @@ function app_ui_init() {
     render_header();
     render_footer();
     render_contact_links('');
+    // Render the birthday banner.
+    render_birthday_banner();
     // This is the entrance of the app, installing the router.
     router_handle_url();
     // Disable smooth scroll.

@@ -61,6 +61,28 @@ const jp_translate = {
     search_song: '曲を検索',
     search_song_count: function(n) { return `${n} 件`; },
 
+    stream_options: 'オプション',
+    stream_option_platform: '配信ルーム',
+    stream_option_content: '内容',
+    stream_option_content_song: '歌回',
+    stream_option_content_others: 'その他',
+
+    birthday_today: 'はれるん！お誕生日おめでとう！',
+    birthday_time: function(d, h, m, s) {
+        if(d > 0) {
+            return `${d} 日 ${h} 時 ${m} 分 ${s} 秒`;
+        } else if(h > 0) {
+            return `${h} 時 ${m} 分 ${s} 秒`;
+        } else if(m > 0) {
+            return `${m} 分 ${s} 秒`;
+        } else if(s > 0) {
+            return `${s} 秒`;
+        } else {
+            return '';
+        }
+    },
+    birthday_count_down: function(n) { return `はれるんの誕生日まであと ${n}`; },
+
     //Urls.
     force_bilibili: false,
 }

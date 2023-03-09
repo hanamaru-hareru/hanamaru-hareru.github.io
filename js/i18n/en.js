@@ -61,6 +61,28 @@ const en_translate = {
     search_song: 'Search all songs',
     search_song_count: function(n) { return `${n} results`; },
 
+    stream_options: 'Option',
+    stream_option_platform: 'Platform',
+    stream_option_content: 'Content',
+    stream_option_content_song: 'Singing Stream',
+    stream_option_content_others: 'Others',
+
+    birthday_today: 'Harerun, happy birthday!',
+    birthday_time: function(d, h, m, s) {
+        if(d > 0) {
+            return `${d} d ${h} h ${m} min ${s} s`;
+        } else if(h > 0) {
+            return `${h} h ${m} min ${s} s`;
+        } else if(m > 0) {
+            return `${m} min ${s} s`;
+        } else if(s > 0) {
+            return `${s} s`;
+        } else {
+            return '';
+        }
+    },
+    birthday_count_down: function(n) { return `${n} to Hareru's birthday`; },
+
     //Urls.
     force_bilibili: false,
 }

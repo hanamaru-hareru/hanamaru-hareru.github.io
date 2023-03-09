@@ -209,6 +209,7 @@ function header_set_item(item_id) {
     document.getElementById('item-'+item_id).classList.add('active');
 }
 
+//System UI footer.
 function render_footer() {
     const footer_title_ids = ['f-stores', 'f-channels', 'f-lives-info'];
     for(let i=0; i<footer_title_ids.length; ++i) {
@@ -219,6 +220,56 @@ function render_footer() {
         document.getElementById(footer_link_ids[i]).innerHTML = app_i18n.footer_links[i];
     }
     document.getElementById('f-license').innerHTML = app_i18n.footer_license;
+}
+
+//System UI birthday check.
+let hareru_birthday_text = document.getElementById('hareru-birthday-text');
+const minute_time_as_ms = 60 * 1000;
+const hour_time_as_ms = 60 * 60 * 1000;
+const day_time_as_ms = 24 * hour_time_as_ms;
+
+function render_birthday_countdown() {
+    //Calculate the time rest.
+    const local_date = new Date();
+    const local_time = local_date.getTime();
+    let time_remain = new Date(local_date.getFullYear()+'-03-20 00:00:00 +0900').getTime() - local_time;
+    // Check time remain.
+    if(time_remain <= 0) {
+        hareru_birthday_text.innerHTML = app_i18n.birthday_today;
+        return;
+    }
+    //Calculate the part remains.
+    const day_remain = Math.floor(time_remain / day_time_as_ms);
+    time_remain -= day_remain * day_time_as_ms;
+    const hour_remain = Math.floor(time_remain / hour_time_as_ms);
+    time_remain -= hour_remain * hour_time_as_ms;
+    const minute_remain = Math.floor(time_remain / minute_time_as_ms);
+    time_remain -= minute_remain * minute_time_as_ms;
+    const second_remain = Math.floor(time_remain / 1000);
+    hareru_birthday_text.innerHTML = app_i18n.birthday_count_down(app_i18n.birthday_time(day_remain, hour_remain, minute_remain, second_remain));
+    setTimeout(render_birthday_countdown, 1000);
+}
+
+function render_birthday_banner() {
+    //Check current time matches or not.
+    const local_date = new Date();
+    const local_time = local_date.getTime();
+    const years_birthday = new Date(local_date.getFullYear()+'-03-20 00:00:00 +0900').getTime();
+    const years_birthday_end = years_birthday + day_time_as_ms;
+    let birthday_banner = document.getElementById('hareru-birthday-banner');
+    console.log(years_birthday, local_time, years_birthday_end)
+    if(years_birthday < local_time && local_time < years_birthday_end) {
+        // Show the happy birthday banner.
+        birthday_banner.removeAttribute('hidden');
+        hareru_birthday_text.innerHTML = app_i18n.birthday_today;
+    }
+    const years_birthday_countdown_start = years_birthday - day_time_as_ms * 15;
+    if(years_birthday_countdown_start < local_time && local_date < years_birthday) {
+        //Show the count down text.
+        birthday_banner.removeAttribute('hidden');
+        //Update the time rest.
+        render_birthday_countdown();
+    }
 }
 
 function render_contact_links(prefix) {

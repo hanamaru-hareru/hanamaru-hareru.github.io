@@ -20,7 +20,20 @@
         </svg>
         <input id="stream-search" type="text" class="form-control search-text-box" placeholder="">
     </div>
-    <div id="stream-counter" class="search-counter"></div>
+    <div class="search-counter"><span id="stream-counter"></span><a id="stream-search-option" class="search-option" onclick="stream_option_toggle();" hidden></a></div>
+    <div class="search-counter" id="stream-search-options" hidden>
+        <div>
+            <span id="stream-filter-platform"></span>
+            <button id="stream-filter-youtube" type="button" class="btn hnmr-btn search-option" onclick="stream_filter_platform_toggle(this);"><a class="button-icon icon-youtube"></a><span id="stream-search-show-youtube"></span></button>
+            <button id="stream-filter-bilibili" type="button" class="btn hnmr-btn" onclick="stream_filter_platform_toggle(this);"><a class="button-icon icon-bilibili"></a><span id="stream-search-show-bilibili"></span></button>
+            <button id="stream-filter-fanbox" type="button" class="btn hnmr-btn" onclick="stream_filter_platform_toggle(this);"><a class="button-icon icon-fanbox"></a><span id="stream-search-show-fanbox" ></span></button>
+        </div>
+        <div>
+            <span id="stream-filter-content"></span>
+            <button id="stream-filter-content-song" type="button" class="btn hnmr-btn search-option" onclick="stream_filter_content_toggle(this);"></button>
+            <button id="stream-filter-content-others" type="button" class="btn hnmr-btn" onclick="stream_filter_content_toggle(this);"></button>
+        </div>
+    </div>
     <div class="table-responsive">
         <table>
             <tbody id="stream-results">

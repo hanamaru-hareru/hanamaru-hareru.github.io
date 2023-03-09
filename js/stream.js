@@ -1,5 +1,7 @@
-let stream = {records: [], display_cache: []};
+let stream = {records: [], display_cache: [], filter_platform: [], filter_index: {'y': [], 'b': [], 'f': []}, filter_content: []};
 let slides = {records: []};
+const stream_filter_platform_button = ['youtube', 'bilibili', 'fanbox'];
+const stream_filter_content_button = ['song', 'others'];
 
 /* day counter */
 function day_counter_render() {
@@ -137,18 +139,93 @@ function slides_render() {
     slide_show(slideIndex);
 }
 
+function stream_filter_platform() {
+    if(stream.filter_platform.length === 0 || stream.filter_platform.length === stream_filter_platform_button.length) {
+        return stream.records;
+    }
+    //Pick out the list.
+    function merge_indices(l1, l2) {
+        if (!l1 || !l2) {
+            return l1 || l2;
+        }
+        let merged_list = [], l1_pos = 0, l2_pos = 0;
+        while(l1_pos < l1.length && l2_pos < l2.length) {
+            if(l1[l1_pos] === l2[l2_pos]) {
+                merged_list.push(l1[l1_pos]);
+                ++l1_pos;
+                ++l2_pos;
+            } else if(l1[l1_pos] < l2[l2_pos]) {
+                merged_list.push(l1[l1_pos]);
+                ++l1_pos;
+            } else {
+                merged_list.push(l2[l2_pos]);
+                ++l2_pos;
+            }
+        }
+        //Add the rest of the list.
+        if(l1_pos < l1.length) {
+            merged_list = merged_list.concat(l1.slice(l1_pos, -1));
+        }
+        if(l2_pos < l2.length) {
+            merged_list = merged_list.concat(l2.slice(l2_pos, -1));
+        }
+        return merged_list;
+    }
+
+    let filter_result = [];
+    for(let i=0; i<stream.filter_platform.length; ++i) {
+        filter_result = merge_indices(filter_result, stream.filter_index[stream.filter_platform[i]]);
+    }
+    //Convert the filter result into real filter content.
+    for(let i=0; i<filter_result.length; ++i) {
+        filter_result[i] = stream.records[filter_result[i]];
+    }
+    return filter_result;
+}
+
+function stream_filter_content(source_content) {
+    //Check no need to filter.
+    if(stream.filter_content.length === 0 || stream.filter_content.length === stream_filter_content_button.length) {
+        return source_content;
+    }
+    //Filter the result.
+    let check_data_5_true = stream.filter_content.includes('song');
+    let check_data_5_false = stream.filter_content.includes('others');
+    let filter_result = [];
+    for(let i=0; i<source_content.length; ++i) {
+        const video_info = source_content[i];
+        if(check_data_5_true && video_info[5]) {
+            filter_result.push(video_info);
+            continue;
+        }
+        if(check_data_5_false && !video_info[5]) {
+            filter_result.push(video_info);
+        }
+    }
+    return filter_result;
+}
+
+function stream_filter_records() {
+    // Filter the platform first.
+    let filter_result = stream_filter_platform();
+    // Then filter the 'has date'.
+    return stream_filter_content(filter_result);
+}
+
 /* stream records */
 function stream_search(keywords) {
     //Perform the search.
     if(keywords.length === 0) {
-        stream.display_cache = stream.records;
+        //Check the filter options.
+        stream.display_cache = stream_filter_records();
     } else {
         // Filter the result.
         stream.display_cache = [];
         keywords = keywords.toLowerCase();
-        for(let i=0; i<stream.records.length; ++i) {
+        let filter_result = stream_filter_records();
+        for(let i=0; i<filter_result.length; ++i) {
             if(stream.records[i][1].toLowerCase().match(keywords)) {
-                stream.display_cache.push(stream.records[i]);
+                stream.display_cache.push(filter_result[i]);
             }
         }
     }
@@ -187,6 +264,22 @@ function stream_search(keywords) {
     document.getElementById('stream-results').innerHTML = record_rows.join('\n');
 }
 
+function stream_options_render() {
+    document.getElementById('stream-search-option').innerHTML = app_i18n.stream_options;
+    // Platform options.
+    document.getElementById('stream-filter-platform').innerHTML = app_i18n.stream_option_platform;
+    document.getElementById('stream-search-show-youtube').innerHTML = app_i18n.contacts[1];
+    document.getElementById('stream-search-show-bilibili').innerHTML = app_i18n.contacts[2];
+    document.getElementById('stream-search-show-fanbox').innerHTML = app_i18n.contacts[3];
+    // Type.
+    document.getElementById('stream-filter-content').innerHTML = app_i18n.stream_option_content;
+    document.getElementById('stream-filter-content-song').innerHTML = app_i18n.stream_option_content_song;
+    document.getElementById('stream-filter-content-others').innerHTML = app_i18n.stream_option_content_others;
+    // Reset the search options.
+    stream.filter_platform = [];
+    stream.filter_content = [];
+}
+
 function load_streams_ui() {
     // Render the stream information list.
     app_load_panel('stream.html', function() {
@@ -198,6 +291,8 @@ function load_streams_ui() {
         day_counter_render();
         // Render the forecast.
         forecast_render();
+        // Render the search options.
+        stream_options_render();
         // Prepare the search box.
         let search_box = document.getElementById('stream-search');
         search_box.setAttribute('placeholder', app_i18n.search_stream);
@@ -237,10 +332,72 @@ function stream_load_data(video_data) {
     //Loop append the song live date.
     for(let i=0; i<video_data.length; ++i) {
         let has_date = song_date.has(video_data[i][4]);
-        if(video_data[i][0] !== 'y' && video_data[i][0] !== 'b') {
+        let from_youtube = false, from_bilibili = false;
+        for(let j=0; j<video_data[i][0].length; ++j) {
+            stream.filter_index[video_data[i][0][j]].push(i);
+            from_youtube = from_youtube || (video_data[i][0][j] === 'y');
+            from_bilibili = from_youtube || (video_data[i][0][j] === 'b');
+        }
+        if(!from_bilibili && !from_youtube) {
             has_date = false;
         }
         video_data[i].push(has_date);
     }
     stream.records = video_data;
+}
+
+function stream_update_platform_filter() {
+    const filter_prefix = 'stream-filter-';
+    let search_filter = [];
+    for(let i=0; i<stream_filter_platform_button.length; ++i) {
+        if(document.getElementById(filter_prefix+stream_filter_platform_button[i]).classList.contains('active')) {
+            search_filter.push(stream_filter_platform_button[i][0]);
+        }
+    }
+    //Update the platform filter.
+    stream.filter_platform = search_filter;
+    //Perform search.
+    stream_search(document.getElementById('stream-search').value);
+}
+
+function stream_filter_platform_toggle(element) {
+    //Toggle the element class list.
+    if(element.classList.contains('active')) {
+        element.classList.remove('active');
+    } else {
+        element.classList.add('active');
+    }
+    stream_update_platform_filter();
+}
+
+function stream_update_content_filter() {
+    const filter_prefix = 'stream-filter-content-';
+    let search_filter = [];
+    for(let i=0; i<stream_filter_content_button.length; ++i) {
+        if(document.getElementById(filter_prefix+stream_filter_content_button[i]).classList.contains('active')) {
+            search_filter.push(stream_filter_content_button[i]);
+        }
+    }
+    stream.filter_content = search_filter;
+    //Perform search.
+    stream_search(document.getElementById('stream-search').value);
+}
+
+function stream_filter_content_toggle(element) {
+    //Toggle the element class list.
+    if(element.classList.contains('active')) {
+        element.classList.remove('active');
+    } else {
+        element.classList.add('active');
+    }
+    stream_update_content_filter();
+}
+
+function stream_option_toggle() {
+    let stream_options = document.getElementById('stream-search-options');
+    if(stream_options.hasAttribute('hidden')) {
+        stream_options.removeAttribute('hidden');
+    } else {
+        stream_options.setAttribute('hidden', '');
+    }
 }

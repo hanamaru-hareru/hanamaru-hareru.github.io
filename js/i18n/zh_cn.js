@@ -62,6 +62,28 @@ const zh_cn_translate = {
     search_song: '搜索曲目',
     search_song_count: function(n) { return `${n} 个结果`; },
 
+    stream_options: '选项',
+    stream_option_platform: '直播平台',
+    stream_option_content: '内容',
+    stream_option_content_song: '歌回',
+    stream_option_content_others: '其他',
+
+    birthday_today: '晴琉琉生日快乐',
+    birthday_time: function(d, h, m, s) {
+        if(d > 0) {
+            return `${d} 天 ${h} 时 ${m} 分 ${s} 秒`;
+        } else if(h > 0) {
+            return `${h} 时 ${m} 分 ${s} 秒`;
+        } else if(m > 0) {
+            return `${m} 分 ${s} 秒`;
+        } else if(s > 0) {
+            return `${s} 秒`;
+        } else {
+            return jp_translate['birthday_today'];
+        }
+    },
+    birthday_count_down: function(n) { return `距离花丸的生日还有 ${n}`; },
+
     //Urls.
     force_bilibili: true,
 }
