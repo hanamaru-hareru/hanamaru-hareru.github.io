@@ -366,13 +366,21 @@ header .nav-item.active a {
 
 /* main panel */
 #hareru-birthday-banner {
-    font-weight: bold;
-    font-size: large;
     color: rgb(var(--text-color));
     background-color: rgba(var(--background-color));
 }
 
-#hareru-birthday-banner > * {
+#hareru-birthday-content {
+    font-weight: bold;
+    font-size: large;
+}
+
+#hareru-birthday-image {
+    padding-top: 1em;
+    width: 100%;
+}
+
+#hareru-birthday-content > * {
     margin: 0;
 }
 
@@ -972,7 +980,7 @@ table>:not(:first-child) {
 
 /* PC version styles */
 @media screen and (min-width: 767px) {
-    #hareru-birthday-banner {
+    #hareru-birthday-content {
         padding-top: 1.5em;
     }
 
@@ -1168,7 +1176,7 @@ table>:not(:first-child) {
 
 /* Mobile version styles */
 @media screen and (max-width: 766px) {
-    #hareru-birthday-banner {
+    #hareru-birthday-content {
         padding-top: 1em;
         margin-bottom: 15px;
     }

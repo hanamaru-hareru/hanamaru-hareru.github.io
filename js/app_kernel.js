@@ -228,14 +228,27 @@ const minute_time_as_ms = 60 * 1000;
 const hour_time_as_ms = 60 * 60 * 1000;
 const day_time_as_ms = 24 * hour_time_as_ms;
 
+function render_birthday_info() {
+    //Show the count down text.
+    document.getElementById('hareru-birthday-banner').removeAttribute('hidden');
+    //Show the greeting message.
+    hareru_birthday_text.innerHTML = app_i18n.birthday_today;
+    //Show the image as well.
+    document.getElementById('hareru-birthday-image').removeAttribute('hidden');
+    //Configure the live stream url.
+    document.getElementById('hareru-birthday-live').setAttribute('href',
+        app_archive_url('https://www.youtube.com/channel/UCyIcOCH-VWaRKH9IkR8hz7Q/live',
+            'https://live.bilibili.com/21547895', app_i18n.force_bilibili ? 'b' : 'y'));
+}
+
 function render_birthday_countdown() {
     //Calculate the time rest.
     const local_date = new Date();
     const local_time = local_date.getTime();
     let time_remain = new Date(local_date.getFullYear()+'-03-20 00:00:00 +0900').getTime() - local_time;
     // Check time remain.
-    if(time_remain <= 0) {
-        hareru_birthday_text.innerHTML = app_i18n.birthday_today;
+    if(time_remain <= 500) {
+        render_birthday_info();
         return;
     }
     //Calculate the part remains.
@@ -257,11 +270,10 @@ function render_birthday_banner() {
     const years_birthday = new Date(local_date.getFullYear()+'-03-20 00:00:00 +0900').getTime();
     const years_birthday_end = years_birthday + day_time_as_ms;
     let birthday_banner = document.getElementById('hareru-birthday-banner');
-    console.log(years_birthday, local_time, years_birthday_end)
     if(years_birthday < local_time && local_time < years_birthday_end) {
         // Show the happy birthday banner.
-        birthday_banner.removeAttribute('hidden');
-        hareru_birthday_text.innerHTML = app_i18n.birthday_today;
+        render_birthday_info();
+        return;
     }
     const years_birthday_countdown_start = years_birthday - day_time_as_ms * 15;
     if(years_birthday_countdown_start < local_time && local_date < years_birthday) {
