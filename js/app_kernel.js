@@ -245,7 +245,7 @@ function render_birthday_countdown() {
     //Calculate the time rest.
     const local_date = new Date();
     const local_time = local_date.getTime();
-    let time_remain = new Date(local_date.getFullYear()+'-03-20 00:00:00 +0900').getTime() - local_time;
+    let time_remain = new Date(local_date.getFullYear()+'-03-20T00:00:00+0900').getTime() - local_time;
     // Check time remain.
     if(time_remain <= 500) {
         render_birthday_info();
@@ -267,7 +267,7 @@ function render_birthday_banner() {
     //Check current time matches or not.
     const local_date = new Date();
     const local_time = local_date.getTime();
-    const years_birthday = new Date(local_date.getFullYear()+'-03-20 00:00:00 +0900').getTime();
+    const years_birthday = new Date(local_date.getFullYear()+'-03-20T00:00:00+0900').getTime();
     const years_birthday_end = years_birthday + day_time_as_ms;
     let birthday_banner = document.getElementById('hareru-birthday-banner');
     if(years_birthday < local_time && local_time < years_birthday_end) {
@@ -277,7 +277,7 @@ function render_birthday_banner() {
     }
     const years_birthday_countdown_start = years_birthday - day_time_as_ms * 15;
     if(years_birthday_countdown_start < local_time && local_date < years_birthday) {
-        //Show the count down text.
+        //Show the countdown text.
         birthday_banner.removeAttribute('hidden');
         //Update the time rest.
         render_birthday_countdown();
