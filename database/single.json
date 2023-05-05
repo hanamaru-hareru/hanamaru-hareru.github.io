@@ -264,7 +264,7 @@
     "b_url": "https://www.bilibili.com/video/BV1vN4y1A7i6"
   },
   {
-    "title": "心臟",
+    "title": "心臟 (cover)",
     "img": "/asserts/single-cover/45.jpg",
     "y_url": "https://www.youtube.com/watch?v=hvZhFnU3AsQ",
     "b_url": "https://www.bilibili.com/video/BV1aK41167YQ"
@@ -273,6 +273,12 @@
     "title": "れすきゅぅうぅぅ",
     "img": "/asserts/single-cover/46.jpg",
     "y_url": "https://www.youtube.com/watch?v=LZFIVeEx1Bs",
-    "b_url": ""
+    "b_url": "https://www.bilibili.com/video/BV14m4y117uy/"
+  },
+  {
+    "title": "アイドル (cover)",
+    "img": "/asserts/single-cover/47.jpg",
+    "y_url": "https://www.youtube.com/watch?v=xMS7G6bquQY",
+    "b_url": "https://www.bilibili.com/video/BV1Xc411N7W1"
   }
 ]
