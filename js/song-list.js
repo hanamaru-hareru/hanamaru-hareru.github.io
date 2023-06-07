@@ -404,7 +404,7 @@ function sl_show_setori(setori_id) {
 }
 
 function song_list_load_panel(panel_url, panel_title, panel_navid, callback) {
-    document.title = panel_title;
+    document.title = panel_title + ' - ' + app_i18n.brand;
     header_set_item('songs');
     //Fetch the song list global panel.
     app_load_panel('song-list.html', function() {
@@ -642,10 +642,19 @@ function sl_setori_init_ui() {
         if('month' in app_url.args && 'day' in app_url.args) {
             // Find the nearest one.
             const target_calender = song_list.calender[parseInt(app_url.args['year'])],
-                target_month = parseInt(app_url.args['month']), target_day = parseInt(app_url.args['day']);
+                target_month = parseInt(app_url.args['month']),
+                target_day = parseInt(app_url.args['day']);
+            let stream_counter = 0;
+            if('counter' in app_url.args) {
+                stream_counter = parseInt(app_url.args['counter']);
+            }
             for(let i=0; i<target_calender.length; ++i) {
                 const live_date = target_calender[i][0].date;
                 if((live_date.getMonth()+1) === target_month && live_date.getDate() === target_day) {
+                    if(stream_counter > 0) {
+                        --stream_counter;
+                        continue;
+                    }
                     sl_show_setori(target_calender[i][1]);
                     return;
                 }

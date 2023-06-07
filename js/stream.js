@@ -233,13 +233,21 @@ function stream_search(keywords) {
     document.getElementById('stream-counter').innerHTML = app_i18n.search_stream_count(stream.display_cache.length);
     //Construct the items.
     const locale = navigator.language;
-    let record_rows = [];
+    let record_rows = [], stream_counter = {};
     for(let i=0; i<stream.display_cache.length; ++i) {
         const video_info = stream.display_cache[i];
         let song_list_url = '';
         if(video_info[5]) {
             const date = video_info[4];
-            song_list_url = '<a class="half-opacity-text float-to-right" href="#setori&year='+date.getFullYear()+'&month='+(date.getMonth()+1)+'&day='+date.getDate()+'">'+app_i18n.view_setori+'</a>';
+            const link_date_param = '&year='+date.getFullYear()+'&month='+(date.getMonth()+1)+'&day='+date.getDate();
+            let link_extra = '';
+            if(link_date_param in stream_counter) {
+                ++stream_counter[link_date_param];
+                link_extra = '&counter=' + stream_counter[link_date_param];
+            } else {
+                stream_counter[link_date_param] = 0;
+            }
+            song_list_url = '<a class="half-opacity-text float-to-right" href="#setori'+link_date_param+link_extra+'">'+app_i18n.view_setori+'</a>';
         }
         // Check the table icon.
         let video_icon = [];
@@ -303,7 +311,7 @@ function load_streams_ui() {
 }
 
 function load_streams() {
-    document.title = app_i18n.title_stream;
+    document.title = app_i18n.title_stream + ' - ' + app_i18n.brand;
     header_set_item('stream');
     // Cache the slides images.
     slides_cache_image();

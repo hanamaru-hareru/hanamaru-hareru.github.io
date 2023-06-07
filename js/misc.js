@@ -152,7 +152,7 @@ function misc_init_ui() {
 }
 
 function load_misc() {
-    document.title = app_i18n.title_misc;
+    document.title = app_i18n.title_misc + ' - ' + app_i18n.brand;
     header_set_item('misc');
     app_load_panel('misc.html', misc_init_ui);
 }

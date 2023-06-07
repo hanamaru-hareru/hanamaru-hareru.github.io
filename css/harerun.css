@@ -6,6 +6,14 @@
     --body-line-height: 1.5;
 }
 
+ul {
+    padding-inline-start: 20px;
+}
+
+ol ul {
+    list-style-type: disc;
+}
+
 .time-row a > *, td a > * {
     margin-bottom: 3px;
     vertical-align: middle;
@@ -407,9 +415,9 @@ header .nav-item.active a {
 
 /* search box */
 .search-border {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
     display: flex;
-    border: 1px solid #dfe1e5;
+    border: 1px solid rgba(223, 225, 229, 0.8);
     box-shadow: none;
     border-radius: 24px;
     z-index: 3;
@@ -694,7 +702,8 @@ table>:not(:first-child) {
 }
 
 #calender-days>tr, #calender-days>tr>td {
-    min-height: 80px;
+    height: 80px;
+    border-top: 1px solid rgba(var(--main-color), 0.3);
 }
 
 .vertical-rest-day {
@@ -716,9 +725,9 @@ table>:not(:first-child) {
     color: #000;
     font-size: 16px;
     padding: .5em .5em .5em .5em;
-    border: 0;
     margin: 0;
     border-radius: 3px;
+    border: 1px solid rgba(173, 173, 173, 0.5);
     text-indent: 0.01px;
     text-overflow: '';
     -webkit-appearance: button;
@@ -798,7 +807,7 @@ table>:not(:first-child) {
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
-    background-color: rgb(var(--background-color));
+    background-color: rgba(var(--card-color), 0.8);
 }
 
 .card-img, .card-img-top {
@@ -843,7 +852,7 @@ table>:not(:first-child) {
     font-size: .875rem;
     border-radius: 0.2rem;
     color: rgb(var(--button-text));
-    background-color: rgb(var(--button-color));
+    background-color: rgb(var(--card-button-color));
     border-color: rgb(var(--button-color));
     vertical-align: top;
 }

@@ -250,7 +250,7 @@ function calender_init_ui() {
 }
 
 function load_calender() {
-    document.title = app_i18n.title_stream;
+    document.title = app_i18n.title_calender + ' - ' + app_i18n.brand;
     // Clear and reset the header.
     header_set_item('calender');
     app_load_panel('calender.html', calender_init_ui);

@@ -61,7 +61,7 @@ function single_search(keyword) {
 function single_load_data(single_data) { single.records = single_data.reverse(); }
 
 function load_single() {
-    document.title = app_i18n.title_single;
+    document.title = app_i18n.title_single + ' - ' + app_i18n.brand;
     header_set_item('single');
     // Load the single html.
     app_load_panel('single.html', function() {

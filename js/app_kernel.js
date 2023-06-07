@@ -1,5 +1,5 @@
-const release_version = [4, 1, 230320];
-const core_version = [4, 0, 0];
+const release_version = [4, 1, 230605];
+const core_version = [4, 1, 0];
 
 /* Basic functions */
 function time_str_minsec(min_or_sec) {
@@ -215,7 +215,7 @@ function render_footer() {
     for(let i=0; i<footer_title_ids.length; ++i) {
         document.getElementById(footer_title_ids[i]).innerHTML = app_i18n.footer_title[i];
     }
-    const footer_link_ids = ['f-booth', 'f-twitter', 'f-youtube', 'f-bilibili', 'f-fanbox', 'f-twitcasting', 'f-bilibili-schedule', 'f-bilibili-live'];
+    const footer_link_ids = ['f-booth', 'f-twitter', 'f-youtube', 'f-bilibili', 'f-fanbox', 'f-twitcasting', 'f-bilibili-live', 'f-youtube-live'];
     for(let i=0; i<footer_link_ids.length; ++i) {
         document.getElementById(footer_link_ids[i]).innerHTML = app_i18n.footer_links[i];
     }

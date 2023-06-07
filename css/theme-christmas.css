@@ -2,8 +2,10 @@
     --main-color: 43, 144, 204;
     --light-color: 161, 198, 225;
     --background-color: 16, 74, 132;
+    --card-color: 12, 53, 95;
     --text-color: 255, 255, 255;
     --button-color: 19, 96, 174;
+    --card-button-color: 19, 96, 174;
     --button-text: 255, 255, 255;
     --hint-color: 146, 181, 206;
     --light-0: rgba(var(--light-color), 1.0);

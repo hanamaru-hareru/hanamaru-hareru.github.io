@@ -12,4 +12,7 @@ if(date_key in theme_settings) {
     document.write('<link href="css/'+theme_settings[date_key]+'" rel="stylesheet">');
 } else {
     document.write('<link href="css/theme-normal.css" rel="stylesheet">');
+    // Used for quick debug
+    // document.write('<link href="css/theme-halloween.css" rel="stylesheet">');
+    // document.write('<link href="css/theme-christmas.css" rel="stylesheet">');
 }
