@@ -366,7 +366,8 @@ header .nav-item.active a {
     margin-right: 5px;
     font-size: 14px;
 }
-.hnmr-btn.active, .hnmr-btn:hover {
+
+.hnmr-btn.active {
     color: #000;
     background-color: #f9fafb;
     border-color: #f9fafb;
@@ -458,7 +459,6 @@ header .nav-item.active a {
 .search-counter {
     margin-top: 5px;
     margin-bottom: 10px;
-    margin-left: 55px;
     color: rgb(var(--hint-color));
 }
 
@@ -768,6 +768,7 @@ table>:not(:first-child) {
 #calender-day-items tr {
     min-height: 50px;
     height: 50px;
+    border-top: 1px solid rgba(var(--main-color), 0.3);
 }
 
 #calender-day-items tr > td {
@@ -989,6 +990,16 @@ table>:not(:first-child) {
 
 /* PC version styles */
 @media screen and (min-width: 767px) {
+    .hnmr-btn:hover {
+        color: #000;
+        background-color: #f9fafb;
+        border-color: #f9fafb;
+    }
+
+    .search-counter {
+        margin-left: 55px;
+    }
+
     #hareru-birthday-content {
         padding-top: 1.5em;
     }
@@ -1185,6 +1196,10 @@ table>:not(:first-child) {
 
 /* Mobile version styles */
 @media screen and (max-width: 766px) {
+    .search-counter {
+        margin-left: 5px;
+    }
+
     #hareru-birthday-content {
         padding-top: 1em;
         margin-bottom: 15px;
