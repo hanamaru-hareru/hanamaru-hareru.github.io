@@ -139,8 +139,15 @@ function forecast_load_data(forecast_data) {
         //Calculate the local time stamp.
         const s_date = forecast_data[i].date;
         const s_time = forecast_data[i].time;
-        const s_date_time = s_date.getFullYear() + '-' + (s_date.getMonth()+1) + '-' + s_date.getDate() + 'T' + s_time[0] + ':' + time_str_minsec(s_time[1]) + ':00';
+
+        function date_month_day_str(value) {
+            return (value < 10) ? '0' + value.toString() : value.toString();
+        }
+
+        const s_date_time = s_date.getFullYear() + '-' + date_month_day_str(s_date.getMonth()+1) + '-' + date_month_day_str(s_date.getDate()) + 'T' + s_time[0] + ':' + time_str_minsec(s_time[1]) + ':00';
+        console.log(s_date_time)
         forecast_data[i].local_time = new Date(s_date_time + '+0900');
+        console.log(forecast_data[i].local_time)
         forecast_data[i].jst_time = new Date(s_date_time);
         if(!forecast_is_valid(local_date, forecast_data[i].local_time)) {
             continue;
