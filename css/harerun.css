@@ -528,6 +528,7 @@ header .nav-item.active a {
 /* Hide the images by default */
 .slide-page {
     display: none;
+    font-size: 1.7em;
 }
 
 .slide-image {
@@ -579,15 +580,16 @@ header .nav-item.active a {
     padding-bottom: 60px;
     right: 0;
     transition: 0.6s ease;
+    max-height: 4em;
 }
 
 .slide-text p {
     margin: 0;
-    font-size: 1.7em;
     padding-left: 10%;
     padding-right: 10%;
     font-weight: 500;
     line-height: 1.2;
+    text-overflow: ellipsis;
 }
 
 .slide-dot {
