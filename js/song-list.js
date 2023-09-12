@@ -115,6 +115,7 @@ function sl_song_list_load_data(song_list_data) {
     console.log('Total song lists: ', song_list_data.length);
     //Statistic the date and songs.
     let calender = {}, song_statistic = {}, medley_statistic = {}, song_counter = 0;
+    const current_year = new Date().getFullYear();
     for(let i=0; i<song_list_data.length; ++i) {
         song_list_data[i].date = new Date(song_list_data[i].date);
         const live_data = song_list_data[i];
@@ -149,7 +150,7 @@ function sl_song_list_load_data(song_list_data) {
         }
         for(let j=0; j<medley.length; ++j) {
             const song_data = medley[j];
-            count_song(medley_statistic, song_data[0].trimLeft(), is_y, i, song_data[1]);
+            count_song(medley_statistic, song_data[0].trimStart(), is_y, i, song_data[1]);
         }
         //Count the year and date.
         const live_year = live_data.date.getFullYear();
@@ -160,7 +161,7 @@ function sl_song_list_load_data(song_list_data) {
         }
     }
     console.log('Total song counter: ', song_counter);
-    // Save the calender.
+    // Save the calendar.
     song_list.calender = calender;
     // Save the song statistic.
     function convert_statistic_to_records(statistic_records) {
@@ -295,8 +296,7 @@ function reload_setori_to_date() {
     window.location.href = "#setori&id="+date_combo.options[date_combo.selectedIndex].value
 }
 
-function sl_render_setori_years() {
-    document.getElementById('sl-live-date-title').innerHTML = app_i18n.title_setori_date;
+function sl_render_setori_year_items() {
     // Render the years.
     let year_items = [];
     let year_list = Object.keys(song_list.calender);
@@ -307,7 +307,12 @@ function sl_render_setori_years() {
     for(let i=0; i<year_list.length; ++i) {
         year_items.push('<option value="'+year_list[i]+'">'+year_list[i]+'</option>');
     }
-    document.getElementById('setori-year-menu').innerHTML = year_items.join('\n');
+    return year_items.join('\n');
+}
+
+function sl_render_setori_years() {
+    document.getElementById('sl-live-date-title').innerHTML = app_i18n.title_setori_date;
+    document.getElementById('setori-year-menu').innerHTML = sl_render_setori_year_items();
 }
 
 function sl_render_archive_link(setori_data, timestamp, show_timestamp) {
@@ -764,9 +769,68 @@ function render_limited_count() {
     render_limited_table(1);
 }
 
+function render_year_new_songs_table(year_num) {
+    //Filter out the max count data.
+    song_list.year_new_songs = [];
+    //Render the table.
+    for(let i=0; i<song_list.merge_statistic.length; ++i) {
+        //Find out the count data.
+        const song_item = song_list.merge_statistic[i];
+        function get_first_sang_year(count_list) {
+            if(count_list.length === 0) {
+                return -1;
+            }
+            return song_list.records[count_list[count_list.length-1][0]].date.getFullYear();
+        }
+        function is_year_new_song() {
+            const b_year = get_first_sang_year(song_item[1].b_count),
+                y_year = get_first_sang_year(song_item[1].y_count);
+            //If one list is empty, check the other list.
+            if(b_year === -1) {
+                return y_year === year_num;
+            }
+            if(y_year === -1) {
+                return b_year === year_num;
+            }
+            //If both list are not empty, the minimum one should be the year num.
+            const less_year = b_year < y_year ? b_year : y_year;
+            return less_year === year_num;
+        }
+
+        if(is_year_new_song()) {
+            song_list.year_new_songs.push(song_item)
+        }
+    }
+    //Sort as last singing date.
+    song_list.year_new_songs.sort(sl_song_sort_function[1]);
+    sl_render_song_table(song_list.year_new_songs, 'sl-yn-count', 'sl-yn-search-results');
+}
+
+function on_year_new_songs_update_year() {
+    let year_combo = document.getElementById('sl-yn-year-select');
+    render_year_new_songs_table(parseInt(year_combo.options[year_combo.selectedIndex].value));
+}
+
+function render_year_new_songs() {
+    //Show the panel.
+    document.getElementById('sl-year-new-songs').removeAttribute('hidden');
+    //Show the table.
+    document.getElementById('sl-year-new-songs-label').innerHTML = app_i18n.year_sang;
+    // Render the table header.
+    const table_header = app_i18n.song_record_table_title;
+    const yn_header_ids = ['sl-yn-song-name', 'sl-yn-song-last', 'sl-yn-song-times', 'sl-yn-song-at-youtube', 'sl-yn-song-at-bilibili'];
+    for(let i=0; i<yn_header_ids.length; ++i) {
+        document.getElementById(yn_header_ids[i]).innerHTML = table_header[i];
+    }
+    //Render the year selector.
+    document.getElementById('sl-yn-year-select').innerHTML = sl_render_setori_year_items();
+    //Render the table.
+    render_year_new_songs_table(2023);
+}
+
 function sl_statistic_init_ui() {
     // Render the navbar.
-    const navbar_statistic_ids = ['sl-s-songs-label', 'sl-s-medley-only-label', 'sl-s-count-limit-label'];
+    const navbar_statistic_ids = ['sl-s-songs-label', 'sl-s-medley-only-label', 'sl-s-count-limit-label', 'sl-s-year-new-songs-label'];
     for(let i=0; i<navbar_statistic_ids.length; ++i) {
         document.getElementById(navbar_statistic_ids[i]).innerHTML = app_i18n.navbar_statistic[i];
     }
@@ -780,6 +844,12 @@ function sl_statistic_init_ui() {
         document.getElementById('sl-s-count-limit').classList.add('active');
         // Render times limited songs.
         render_limited_count();
+        return;
+    }
+    if('year-new-songs' in app_url.args) {
+        document.getElementById('sl-s-year-new-songs').classList.add('active');
+        // Render the year new songs.
+        render_year_new_songs();
         return;
     }
     document.getElementById('sl-s-songs').classList.add('active');

@@ -6,7 +6,7 @@ const en_translate = {
     contacts: ['Twitter', 'Youtube', 'Bilibili', 'Fanbox'],
     navbar: ['Stream', 'Calender', 'Single', 'Song List', 'Misc.'],
     navbar_song_list: ['Song List', 'Single Songs', 'Medley Songs', 'All Songs', 'Statistic'],
-    navbar_statistic: ['Stream Limited', 'Medley Limited', 'Times Limited'],
+    navbar_statistic: ['Stream Limited', 'Medley Limited', 'Times Limited', 'Annual New Song'],
     navbar_misc: ['Stream Greetings', 'Harerun Button', 'Self-intro Song Lyrics', 'Omikuji', 'Site Info'],
     navbar_intro: ['Original', '1st Anni.', 'End of 2020', '2nd Anni.', 'End of 2021', '3rd Anni.'],
     song_record_table_title: ['Song Name', 'Last sung', 'Times', 'Times @ Youtube', 'Times @ Bilibili'],
@@ -82,6 +82,8 @@ const en_translate = {
         }
     },
     birthday_count_down: function(n) { return `${n} to Hareru's birthday`; },
+
+    year_sang: 'Year of singing: ',
 
     //Urls.
     force_bilibili: false,

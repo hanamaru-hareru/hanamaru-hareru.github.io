@@ -3,6 +3,7 @@
         <li id="sl-s-songs"><a id="sl-s-songs-label" href="#song-statistic"></a></li>
         <li id="sl-s-medley-only"><a id="sl-s-medley-only-label" href="#song-statistic&medley-only"></a></li>
         <li id="sl-s-count-limit"><a id="sl-s-count-limit-label" href="#song-statistic&counter"></a></li>
+        <li id="sl-s-year-new-songs"><a id="sl-s-year-new-songs-label" href="#song-statistic&year-new-songs"></a></li>
     </ul>
 </nav>
 <div id="sl-s-limited" class="container" hidden>
@@ -88,14 +89,39 @@
         <table>
             <thead>
             <tr>
-                <th id="sl-c-song-header-0"><span id="sl-c-song-name"></span><span class="float-to-right" id="sort-mark-0"></span></th>
-                <th id="sl-c-song-header-1"><span id="sl-c-song-last"></span><span class="float-to-right" id="sort-mark-1"></span></th>
-                <th id="sl-c-song-header-2"><span id="sl-c-song-times"></span><span class="float-to-right" id="sort-mark-2"></span></th>
-                <th id="sl-c-song-header-3"><span id="sl-c-song-at-youtube"></span><span class="float-to-right" id="sort-mark-3"></span></th>
-                <th id="sl-c-song-header-4"><span id="sl-c-song-at-bilibili"></span><span class="float-to-right" id="sort-mark-4"></span></th>
+                <th id="sl-c-song-header-0"><span id="sl-c-song-name"></span></th>
+                <th id="sl-c-song-header-1"><span id="sl-c-song-last"></span></th>
+                <th id="sl-c-song-header-2"><span id="sl-c-song-times"></span></th>
+                <th id="sl-c-song-header-3"><span id="sl-c-song-at-youtube"></span></th>
+                <th id="sl-c-song-header-4"><span id="sl-c-song-at-bilibili"></span></th>
             </tr>
             </thead>
             <tbody id="sl-c-search-results">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="sl-year-new-songs" hidden>
+    <div class="top-tap-margin">
+        <span id="sl-year-new-songs-label"></span>
+        <span class="calender-dropdown">
+            <select class="calender-select" id="sl-yn-year-select" onchange="on_year_new_songs_update_year()"></select>
+        </span>
+    </div>
+    <div class="search-counter statistic-counter" id="sl-yn-count"></div>
+    <div class="table-responsive">
+        <table>
+            <thead>
+            <tr>
+                <th id="sl-yn-song-header-0"><span id="sl-yn-song-name"></span><span class="float-to-right" id="yn-sort-mark-0"></span></th>
+                <th id="sl-yn-song-header-1"><span id="sl-yn-song-last"></span><span class="float-to-right" id="yn-sort-mark-1"></span></th>
+                <th id="sl-yn-song-header-2"><span id="sl-yn-song-times"></span><span class="float-to-right" id="yn-sort-mark-2"></span></th>
+                <th id="sl-yn-song-header-3"><span id="sl-yn-song-at-youtube"></span><span class="float-to-right" id="yn-sort-mark-3"></span></th>
+                <th id="sl-yn-song-header-4"><span id="sl-yn-song-at-bilibili"></span><span class="float-to-right" id="yn-sort-mark-4"></span></th>
+            </tr>
+            </thead>
+            <tbody id="sl-yn-search-results">
             </tbody>
         </table>
     </div>
