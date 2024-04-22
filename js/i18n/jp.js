@@ -16,7 +16,7 @@ const jp_translate = {
     footer_warning: 'このサイトは花丸はれるの非公式情報サイトです、全ての情報は花丸はれるさんの公式情報プラットフォームをご覧ください。<br>このサイトは情報データの正確性を保証するものではなく、すべてのデータはいつでも変更される可能性があります。',
     footer_license: 'コードライセンスは<a href="https://github.com/hanamaru-hareru/hanamaru-hareru.github.io/blob/master/LICENSE" rel="license noopener" target="_blank">HARERUソフトライセンス</a>（コード本体は<a href="https://github.com/hanamaru-hareru/hanamaru-hareru.github.io/">Github</a>であります）、データライセンスは <a href="https://creativecommons.org/licenses/by/3.0/" rel="license noopener" target="_blank">CC BY 3.0</a>。',
     footer_author: 'プログラム、メンテナンス、データ取集、雑役担当：',
-    footer_copyright: "これは花丸はれるの非公式サイトです。すべての情報、画像、音声、その他のデータは花丸はれるさんの公式アカウントからのものです。 これらの著作権は元の作者に帰属します。このサイトは学習、娯楽、交流を目的としており、花丸はれる公式と元の著作権者以外の者がAIトレーニングと商業目的で使用することは禁止です。詳細については、<a href=\"mailto:haolei.ye@anu.edu.au\">haolei.ye@anu.edu.au</a>にメールを送信してください。",
+    footer_copyright: "これは花丸はれるの非公式サイトです。すべての情報、画像、音声、その他のデータは花丸はれるさんの公式アカウントからのものです。 これらの著作権は元の作者に帰属します。このサイトは学習、娯楽、交流を目的としており、花丸はれる公式と元の著作権者以外の者がAIトレーニングと商業目的で使用することは禁止です。詳細については、<a href=\"mailto:872401892@qq.com\">872401892@qq.com</a>にメールを送信してください。",
     footer_data_correct: 'データ審査：',
     footer_resource: '素材提供：',
     title_omikuji: '今日の運勢は',

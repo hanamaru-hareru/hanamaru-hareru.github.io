@@ -15,7 +15,7 @@ const zh_cn_translate = {
     footer_maintain: '本站由 <a href="https://twitter.com/sakitojo" rel="noopener" target="_blank">Saki Tojo</a> 以及花丸家的大家设计、构建和维护。',
     footer_license: '源代码以<a href="https://github.com/hanamaru-hareru/hanamaru-hareru.github.io/blob/master/LICENSE" rel="license noopener" target="_blank">HARERU软件协议</a>授权（网站源代码可在<a href="https://github.com/hanamaru-hareru/hanamaru-hareru.github.io/">这里</a>获取），所有的数据以<a href="https://creativecommons.org/licenses/by/3.0/" rel="license noopener" target="_blank">CC 3.0</a>的形式分发。',
     footer_warning: '本网站是花丸晴琉的非官方信息站，所有的信息请以花丸晴琉的官方信息公布平台为准。<br>本网站不保证信息的准确性，所有数据可能会随时进行修改。',
-    footer_copyright: '本网站为非官方制作。网站中的信息、图片、音频及其他数据均来自花丸晴琉官方账号。这些数据的著作权归原作者所有。本网站仅供学习娱乐交流使用，并且禁止除花丸晴琉官方与原版权所有者以外的任何人用于AI训练以及商业用途。如果您有任何疑问，请发送邮件到<a href="mailto:haolei.ye@anu.edu.au">haolei.ye@anu.edu.au</a>咨询。',
+    footer_copyright: '本网站为非官方制作。网站中的信息、图片、音频及其他数据均来自花丸晴琉官方账号。这些数据的著作权归原作者所有。本网站仅供学习娱乐交流使用，并且禁止除花丸晴琉官方与原版权所有者以外的任何人用于AI训练以及商业用途。如果您有任何疑问，请发送邮件到<a href="mailto:872401892@qq.com">872401892@qq.com</a>咨询。',
     footer_author: '程序、维护、数据收集、杂役：',
     footer_data_correct: '数据检查：',
     footer_resource: '素材提供：',
