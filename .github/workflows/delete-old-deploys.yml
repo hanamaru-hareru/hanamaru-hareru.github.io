@@ -1,0 +1,16 @@
+name: Delete Old Deploys
+on:
+  push:
+    branches:
+      - main
+jobs:
+  delete-deploys:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old deploys
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          curl -X DELETE "https://api.cloudflare.com/client/v4/zones/5941cc7ee22790776b6118bd9e08e888/deployments/62853fc2" \
+          -H "Authorization: Bearer $CF_API_TOKEN" \
+          -H "Content-Type: application/json"
